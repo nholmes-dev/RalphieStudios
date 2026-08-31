@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ralphie Studios | Indie Game Development</title>
+  <meta name="description" content="Ralphie Studios — indie game development studio. Currently building Wheelchair Rugby League in Unreal Engine 5.">
+  <meta property="og:title" content="Ralphie Studios | Indie Game Development">
+  <meta property="og:description" content="One developer. Big ideas. Games made with a whole lot of heart.">
+  <meta property="og:url" content="https://ralphiestudios.com/">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav id="nav">
+    <div class="nav-brand"><span class="nr">RALPHIE</span><span class="ns">STUDIOS</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#games">Games</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <canvas id="cvs"></canvas>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <!--
+        To use your logo image:
+        1. Save logo.png into the images/ folder
+        2. Remove the hero-wordmark div below
+        3. Uncomment the img tag
+      -->
+      <!-- <img src="images/logo.png" alt="Ralphie Studios" class="hero-logo-img"> -->
+      <div class="hero-wordmark">
+        <div class="hero-name"><span class="nr">RALPHIE</span><span class="ns">STUDIOS</span></div>
+        <div class="hero-sub">Game Development</div>
+      </div>
+      <div class="hero-rule"></div>
+      <p class="hero-tag">One developer. Big ideas. Games made with a whole lot of heart.</p>
+      <div class="ctas">
+        <a href="#games" class="btn btn-p">See What We're Building</a>
+        <a href="#about" class="btn btn-g">About the Studio</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="eyebrow">The Studio</p>
+          <h2 class="sh">Small team.<br>Serious games.</h2>
+          <p>Ralphie Studios is a solo indie game development studio with big ambitions. Every project is built from the ground up with care — from mechanics to UI — with an emphasis on games that feel good to play and actually mean something.</p>
+          <p>Currently deep in development on a first game, proving that passion and Unreal Engine 5 are a pretty solid starting point.</p>
+        </div>
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-n">1</div>
+            <div class="stat-l">Game in Dev</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">UE5</div>
+            <div class="stat-l">Engine</div>
+          </div>
+          <div class="tech">
+            <div class="tech-lbl">Tech Stack</div>
+            <div class="pills">
+              <span class="pill b">Unreal Engine 5</span>
+              <span class="pill b">Blueprints</span>
+              <span class="pill o">C++</span>
+              <span class="pill">Blender</span>
+              <span class="pill">GitHub</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="games" class="games-bg">
+    <div class="wrap">
+      <p class="eyebrow">Games</p>
+      <h2 class="sh">What We're Building</h2>
+      <div class="game-card">
+        <div class="game-vis">
+          <div class="gv-glow"></div>
+          <div class="gv-inner">
+            <span class="game-ico">🏉</span>
+            <div class="gv-tag">Unreal Engine 5</div>
+          </div>
+        </div>
+        <div class="game-info">
+          <div class="game-badge"><span class="bdot"></span>In Development</div>
+          <h3 class="game-title">Wheelchair Rugby League</h3>
+          <p class="game-desc">A full-contact sports game bringing wheelchair rugby to the screen for the first time. Chair mechanics are in — and it's already feeling great.</p>
+          <div class="game-meta">
+            <span class="mdot"></span>
+            Built with Unreal Engine 5 &middot; Chair physics complete
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="connect">
+    <div class="wrap">
+      <div class="connect-inner">
+        <p class="eyebrow">Connect</p>
+        <h2 class="sh">Follow the journey.</h2>
+        <p>Dev updates, behind-the-scenes progress, and the occasional Ralphie sighting. Find the studio across socials or reach out directly.</p>
+        <div class="soc-row">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="soc-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+          <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="soc-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.738l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            X / Twitter
+          </a>
+          <a href="mailto:contact@ralphiestudios.com" class="soc-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="ft-brand"><span class="nr">RALPHIE</span><span class="ns">STUDIOS</span></div>
+    <p>&copy; 2026 Ralphie Studios. All rights reserved.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
