@@ -1,23 +1,37 @@
-// Nav scroll state
+// Nav scroll
 const nav = document.getElementById('nav');
-addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), { passive: true });
+const heroContent = document.querySelector('.hero-content');
+const hero = document.querySelector('.hero');
 
-// Hero canvas particles
+addEventListener('scroll', () => {
+  const y = scrollY;
+
+  // Nav solid background
+  nav.classList.toggle('scrolled', y > 40);
+
+  // Hero scroll fade + drift up
+  const heroH = hero.offsetHeight;
+  const progress = Math.max(0, Math.min(y / (heroH * 0.55), 1));
+  heroContent.style.opacity = 1 - progress;
+  heroContent.style.transform = `translateY(${y * 0.28}px)`;
+}, { passive: true });
+
+// Canvas particles — full hero coverage
 const cvs = document.getElementById('cvs');
 const cx = cvs.getContext('2d');
 let W, H, pts;
 
 function init() {
-  W = cvs.width  = cvs.offsetWidth;
-  H = cvs.height = cvs.offsetHeight;
-  pts = Array.from({ length: 90 }, () => ({
+  W = cvs.width  = hero.offsetWidth;
+  H = cvs.height = hero.offsetHeight;
+  pts = Array.from({ length: 180 }, () => ({
     x: Math.random() * W,
     y: Math.random() * H,
-    r: Math.random() * 1.4 + 0.4,
-    vx: (Math.random() - 0.5) * 0.22,
-    vy: (Math.random() - 0.5) * 0.22,
+    r: Math.random() * 1.6 + 0.3,
+    vx: (Math.random() - 0.5) * 0.2,
+    vy: (Math.random() - 0.5) * 0.2,
     col: Math.random() > 0.5 ? 0 : 1,
-    a: Math.random() * 0.45 + 0.08
+    a: Math.random() * 0.5 + 0.07
   }));
 }
 
@@ -29,8 +43,8 @@ function tick() {
     cx.beginPath();
     cx.arc(p.x, p.y, p.r, 0, 6.283);
     cx.fillStyle = p.col
-      ? `rgba(240,120,32,${p.a})`
-      : `rgba(74,143,224,${p.a})`;
+      ? `rgba(253,142,55,${p.a})`
+      : `rgba(106,163,232,${p.a})`;
     cx.fill();
   }
   requestAnimationFrame(tick);
