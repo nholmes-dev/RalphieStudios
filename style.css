@@ -68,7 +68,7 @@ nav.scrolled {
   will-change: transform, opacity;
 }
 .hero-logo-img {
-  max-height: clamp(260px, 38vw, 420px);
+  max-height: clamp(320px, 50vw, 540px);
   width: auto; margin: 0 auto 0;
 }
 .hero-wordmark { margin-bottom: 0; }
