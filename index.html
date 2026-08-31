@@ -3,188 +3,470 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ralphie Studios | Indie Game Development</title>
-  <meta name="description" content="Ralphie Studios — indie game development studio. Currently building Wheelchair Rugby League in Unreal Engine 5.">
-  <meta property="og:title" content="Ralphie Studios | Indie Game Development">
-  <meta property="og:description" content="One developer. Big ideas. Games made with a whole lot of heart.">
+
+  <title>Ralphie Studios | Games, Apps & Sports Experiences</title>
+
+  <meta
+    name="description"
+    content="Ralphie Studios is an independent development studio creating games, apps and digital sports experiences — including the first Wheelchair Rugby League game and BaizeBoard."
+  >
+
+  <meta property="og:title" content="Ralphie Studios | Games, Apps & Sports Experiences">
+  <meta property="og:description" content="One developer. Big ideas. Games, tools and sports experiences built with heart.">
   <meta property="og:url" content="https://ralphiestudios.com/">
   <meta property="og:type" content="website">
+
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Russo+One&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <nav id="nav">
-    <a href="/" class="nav-brand"><span class="nr">RALPHIE</span><span class="ns">STUDIOS</span></a>
+    <a href="/" class="nav-brand">
+      <span class="nr">RALPHIE</span><span class="ns">STUDIOS</span>
+    </a>
+
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
-      <li><a href="#games">Games</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#connect">Connect</a></li>
     </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
+
+    <button
+      class="nav-toggle"
+      id="navToggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
   </nav>
 
+  <!-- HERO -->
   <section class="hero" id="home">
     <canvas id="cvs"></canvas>
     <div class="hero-glow"></div>
+
     <div class="hero-content">
-      <img src="images/logo.png" alt="Ralphie Studios" class="hero-logo-img">
+      <img
+        src="images/logo.png"
+        alt="Ralphie Studios"
+        class="hero-logo-img"
+      >
+
       <div class="hero-rule"></div>
-      <p class="hero-tag">One developer. Big ideas. Games made with a whole lot of heart.</p>
+
+      <p class="hero-tag">
+        One developer. Big ideas. Games, tools and sports experiences built with heart.
+      </p>
+
       <div class="ctas">
-        <a href="#games" class="btn btn-p">See What We're Building</a>
-        <a href="#about" class="btn btn-g">About the Studio</a>
+        <a href="#projects" class="btn btn-p">Explore the Projects</a>
+        <a href="#about" class="btn btn-g">About Ralphie Studios</a>
       </div>
     </div>
   </section>
 
   <hr class="rule">
 
+  <!-- ABOUT -->
   <section id="about">
     <div class="wrap">
       <div class="about-grid">
+
         <div class="about-text">
           <p class="eyebrow">The Studio</p>
-          <h2 class="sh">Small team.<br>Serious games.</h2>
-          <p>Ralphie Studios is a solo indie game development studio with big ambitions. Every project is built from the ground up with care — from mechanics to UI — with an emphasis on games that feel good to play and actually mean something.</p>
-          <p>Currently deep in development on a first game, proving that passion and Unreal Engine 5 are a pretty solid starting point.</p>
+
+          <h2 class="sh">
+            Small studio.<br>
+            Serious ideas.
+          </h2>
+
+          <p>
+            Ralphie Studios is an independent development studio creating games,
+            apps and digital experiences with a particular love for sport.
+            Projects are built from the ground up with care — from gameplay
+            mechanics and physics to UI, presentation and the small details that
+            make something feel authentic.
+          </p>
+
+          <p>
+            The studio is currently developing the first Wheelchair Rugby League
+            video game in Unreal Engine 5, alongside BaizeBoard — a live digital
+            snooker scoreboard platform.
+          </p>
         </div>
+
         <div class="stats-grid">
+
           <div class="stat">
             <div class="stat-n">1</div>
-            <div class="stat-l">Game in Dev</div>
+            <div class="stat-l">Game in Development</div>
           </div>
+
           <div class="stat">
-            <div class="stat-n">UE5</div>
-            <div class="stat-l">Engine</div>
+            <div class="stat-n">1</div>
+            <div class="stat-l">Live Sports App</div>
           </div>
+
           <div class="tech">
-            <div class="tech-lbl">Tech Stack</div>
+            <div class="tech-lbl">Current Stack</div>
+
             <div class="pills">
               <span class="pill b">Unreal Engine 5</span>
               <span class="pill b">Blueprints</span>
               <span class="pill o">C++</span>
-              <span class="pill">Blender</span>
+              <span class="pill">Web Development</span>
               <span class="pill">GitHub</span>
+              <span class="pill">Cloudflare</span>
             </div>
           </div>
+
         </div>
+
       </div>
     </div>
   </section>
 
   <hr class="rule">
 
-  <section id="games" class="games-bg">
+  <!-- PROJECTS -->
+  <section id="projects" class="games-bg">
     <div class="wrap">
-      <p class="eyebrow">Games</p>
+
+      <p class="eyebrow">Projects</p>
       <h2 class="sh">What We're Building</h2>
-      <div class="game-card">
-        <div class="game-vis">
-          <div class="gv-glow"></div>
-          <div class="gv-inner">
-            <span class="game-ico">🏉</span>
-            <div class="gv-tag">Unreal Engine 5</div>
+
+      <p class="projects-intro">
+        From an ambitious sports game built around a sport that has never had its
+        own dedicated video game, to practical digital tools already being used
+        today.
+      </p>
+
+      <div class="projects-list">
+
+        <!-- WRL -->
+        <article class="game-card featured-project">
+
+          <div class="game-vis wrl-project-vis">
+            <div class="gv-glow"></div>
+
+            <div class="gv-inner">
+              <div class="project-mini-label">Flagship Project</div>
+              <span class="game-ico">🏉</span>
+              <div class="gv-tag">Unreal Engine 5</div>
+            </div>
           </div>
-        </div>
-        <div class="game-info">
-          <div class="game-badge"><span class="bdot"></span>In Development</div>
-          <h3 class="game-title">Wheelchair Rugby League</h3>
-          <p class="game-desc">A full-contact sports game bringing wheelchair rugby to the screen for the first time. Chair mechanics are in — and it's already feeling great.</p>
-          <div class="game-meta">
-            <span class="mdot"></span>
-            Built with Unreal Engine 5 &middot; Chair physics complete
+
+          <div class="game-info">
+
+            <div class="game-badge">
+              <span class="bdot"></span>
+              Pre-Alpha Development
+            </div>
+
+            <h3 class="game-title">Wheelchair Rugby League</h3>
+
+            <p class="project-kicker">
+              The first Wheelchair Rugby League video game.
+            </p>
+
+            <p class="game-desc">
+              A fast, physical sports game being built specifically around
+              Wheelchair Rugby League — with chair-first handling, passing,
+              kicking, tries, player attributes, body positioning, contact
+              mechanics and an authentic match-day presentation.
+            </p>
+
+            <div class="project-progress">
+              <span>Chair handling</span>
+              <span>Passing &amp; kicking</span>
+              <span>Try scoring</span>
+              <span>Player stats</span>
+            </div>
+
+            <div class="game-meta">
+              <span class="mdot"></span>
+              Unreal Engine 5 &middot; Core gameplay systems in development
+            </div>
+
+            <a href="wrl.html" class="btn btn-g project-btn">
+              Explore the Game →
+            </a>
+
           </div>
-          <a href="wrl.html" class="btn btn-g" style="margin-top:1.5rem;width:fit-content;font-size:0.8rem;letter-spacing:0.07em;text-transform:uppercase;font-weight:700;border-radius:3px;">View Game Page →</a>
-        </div>
+        </article>
+
+        <!-- BAIZEBOARD -->
+        <article class="game-card baize-project">
+
+          <div class="game-vis baize-vis">
+            <div class="baize-felt"></div>
+
+            <div class="gv-inner baize-inner">
+
+              <div class="project-mini-label live-label">
+                Live Product
+              </div>
+
+              <img
+                src="images/baizeboard-logo.png"
+                alt="BaizeBoard"
+                class="baize-logo"
+              >
+
+              <div class="gv-tag baize-tag">
+                Digital Snooker Scoreboard
+              </div>
+
+            </div>
+          </div>
+
+          <div class="game-info">
+
+            <div class="game-badge live-badge">
+              <span class="bdot"></span>
+              Live Now
+            </div>
+
+            <h3 class="game-title">BaizeBoard</h3>
+
+            <p class="project-kicker">
+              Digital scoring built for the baize.
+            </p>
+
+            <p class="game-desc">
+              A modern digital snooker scoreboard for players, clubs and match
+              nights. BaizeBoard provides a clean scoring experience across web
+              and supported devices without needing traditional scoreboard
+              hardware.
+            </p>
+
+            <div class="project-progress baize-progress">
+              <span>Live product</span>
+              <span>Snooker scoring</span>
+              <span>Web platform</span>
+            </div>
+
+            <div class="game-meta">
+              <span class="mdot baize-dot"></span>
+              Sports technology &middot; Available now
+            </div>
+
+            <a
+              href="https://baizeboard.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-baize project-btn"
+            >
+              Visit BaizeBoard →
+            </a>
+
+          </div>
+        </article>
+
       </div>
+
     </div>
   </section>
 
   <hr class="rule">
 
+  <!-- TEAM -->
   <section id="team">
     <div class="wrap">
+
       <p class="eyebrow">Meet the Team</p>
-      <h2 class="sh">The people behind the pixels.</h2>
+
+      <h2 class="sh">
+        The people behind the pixels.
+      </h2>
+
       <div class="team-grid">
 
         <div class="team-card">
+
           <div class="team-photo-wrap">
-            <!-- Save images/nathan.jpg to activate -->
-            <img src="images/nathan.jpg" alt="Nathan" class="team-photo"
-                 onerror="this.style.display='none'">
+            <img
+              src="images/nathan.jpg"
+              alt="Nathan"
+              class="team-photo"
+              onerror="this.style.display='none'"
+            >
+
             <div class="team-photo-fallback">👤</div>
           </div>
+
           <div class="team-info">
-            <span class="team-role orange">Developer</span>
+            <span class="team-role orange">
+              Founder &middot; Developer
+            </span>
+
             <h3 class="team-name">Nathan</h3>
-            <p class="team-bio">The person actually making the game. Specialises in bridging legacy thinking with modern engine development, and is currently deep in UE5 proving that one determined developer is all it takes.</p>
+
+            <p class="team-bio">
+              Developer, designer and chief problem-solver behind Ralphie Studios.
+              Currently building Wheelchair Rugby League in Unreal Engine 5 while
+              developing the systems, presentation and technology that bring the
+              project together.
+            </p>
           </div>
+
         </div>
 
         <div class="team-card">
+
           <div class="team-photo-wrap">
-            <!-- Save images/ralph.jpg to activate -->
-            <img src="images/ralph.jpg" alt="Ralph" class="team-photo"
-                 onerror="this.style.display='none'">
+            <img
+              src="images/ralph.jpg"
+              alt="Ralph"
+              class="team-photo"
+              onerror="this.style.display='none'"
+            >
+
             <div class="team-photo-fallback">🐕</div>
           </div>
+
           <div class="team-info">
-            <span class="team-role blue">Head of Morale &middot; Official Namesake</span>
+
+            <span class="team-role blue">
+              Head of Morale &middot; Official Namesake
+            </span>
+
             <h3 class="team-name">Ralph</h3>
-            <p class="team-bio">When he isn't sleeping on keypads, he is overseeing game physics and ensuring top-tier playability. The studio bears his name for a reason.</p>
+
+            <p class="team-bio">
+              Responsible for studio morale, mandatory breaks and occasionally
+              occupying important development equipment. Ralphie Studios bears
+              his name for a reason.
+            </p>
+
           </div>
+
         </div>
 
       </div>
+
     </div>
   </section>
 
   <hr class="rule">
 
+  <!-- CONNECT -->
   <section id="connect">
     <div class="wrap">
+
       <div class="connect-inner">
+
         <p class="eyebrow">Connect</p>
-        <h2 class="sh">Follow the journey.</h2>
-        <p>Dev updates, behind-the-scenes progress, and the occasional Ralph sighting. Find the studio across socials or reach out directly.</p>
+
+        <h2 class="sh">
+          Follow the journey.
+        </h2>
+
+        <p>
+          Development updates, behind-the-scenes progress, new projects and the
+          occasional Ralph sighting.
+        </p>
+
         <div class="soc-row">
-          <a href="https://github.com/nholmes-dev" target="_blank" rel="noopener noreferrer" class="soc-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+
+          <a
+            href="https://github.com/nholmes-dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="soc-btn"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+
             GitHub
           </a>
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="soc-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.738l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+
+          <a
+            href="https://x.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="soc-btn"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.738l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+
             X / Twitter
           </a>
+
           <a href="mailto:contact@ralphiestudios.com" class="soc-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+
             Email
           </a>
+
         </div>
+
       </div>
     </div>
   </section>
 
   <footer>
-    <a href="/" class="ft-logo-brand" style="text-decoration:none"><span class="nr">RALPHIE</span><span class="ns">STUDIOS</span></a>
+
+    <a href="/" class="ft-logo-brand">
+      <span class="nr">RALPHIE</span><span class="ns">STUDIOS</span>
+    </a>
+
     <div class="ft-right">
       <p>&copy; 2026 Ralphie Studios. All rights reserved.</p>
+
       <div class="ft-links">
         <a href="terms.html">Terms of Use</a>
         <a href="privacy.html">Privacy Policy</a>
       </div>
     </div>
+
   </footer>
 
   <script src="main.js"></script>
+
 </body>
 </html>
