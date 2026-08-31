@@ -18,10 +18,16 @@
 <body>
 
   <nav id="nav">
-    <div class="nav-brand"><span class="nr">RALPHIE</span><span class="ns">STUDIOS</span></div>
+    <!-- Save images/logo-wordmark.png to activate -->
+    <img src="images/logo-wordmark.png" alt="Ralphie Studios" class="nav-logo-img"
+         onerror="this.style.display='none'; document.getElementById('nav-brand-text').style.display='block'">
+    <div class="nav-brand" id="nav-brand-text" style="display:none">
+      <span class="nr">RALPHIE</span><span class="ns">STUDIOS</span>
+    </div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#games">Games</a></li>
+      <li><a href="#team">Team</a></li>
       <li><a href="#connect">Connect</a></li>
     </ul>
   </nav>
@@ -30,14 +36,10 @@
     <canvas id="cvs"></canvas>
     <div class="hero-glow"></div>
     <div class="hero-content">
-      <!--
-        To use your logo image:
-        1. Save logo.png into the images/ folder
-        2. Remove the hero-wordmark div below
-        3. Uncomment the img tag
-      -->
-      <!-- <img src="images/logo.png" alt="Ralphie Studios" class="hero-logo-img"> -->
-      <div class="hero-wordmark">
+      <!-- Save images/logo.png (full logo with dog) to activate -->
+      <img src="images/logo.png" alt="Ralphie Studios" class="hero-logo-img"
+           onerror="this.style.display='none'; document.getElementById('hero-wordmark').style.display='block'">
+      <div class="hero-wordmark" id="hero-wordmark" style="display:none">
         <div class="hero-name"><span class="nr">RALPHIE</span><span class="ns">STUDIOS</span></div>
         <div class="hero-sub">Game Development</div>
       </div>
@@ -114,14 +116,54 @@
 
   <hr class="rule">
 
+  <section id="team">
+    <div class="wrap">
+      <p class="eyebrow">Meet the Team</p>
+      <h2 class="sh">The people behind the pixels.</h2>
+      <div class="team-grid">
+
+        <div class="team-card">
+          <div class="team-photo-wrap">
+            <!-- Save images/nathan.jpg to activate -->
+            <img src="images/nathan.jpg" alt="Nathan" class="team-photo"
+                 onerror="this.style.display='none'">
+            <div class="team-photo-fallback">👤</div>
+          </div>
+          <div class="team-info">
+            <span class="team-role orange">Developer</span>
+            <h3 class="team-name">Nathan</h3>
+            <p class="team-bio">The person actually making the game. Specialises in bridging legacy thinking with modern engine development, and is currently deep in UE5 proving that one determined developer is all it takes.</p>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-photo-wrap">
+            <!-- Save images/ralph.jpg to activate -->
+            <img src="images/ralph.jpg" alt="Ralph" class="team-photo"
+                 onerror="this.style.display='none'">
+            <div class="team-photo-fallback">🐕</div>
+          </div>
+          <div class="team-info">
+            <span class="team-role blue">Head of Morale &middot; Official Namesake</span>
+            <h3 class="team-name">Ralph</h3>
+            <p class="team-bio">When he isn't sleeping on keypads, he is overseeing game physics and ensuring top-tier playability. The studio bears his name for a reason.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
   <section id="connect">
     <div class="wrap">
       <div class="connect-inner">
         <p class="eyebrow">Connect</p>
         <h2 class="sh">Follow the journey.</h2>
-        <p>Dev updates, behind-the-scenes progress, and the occasional Ralphie sighting. Find the studio across socials or reach out directly.</p>
+        <p>Dev updates, behind-the-scenes progress, and the occasional Ralph sighting. Find the studio across socials or reach out directly.</p>
         <div class="soc-row">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="soc-btn">
+          <a href="https://github.com/nholmes-dev" target="_blank" rel="noopener noreferrer" class="soc-btn">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             GitHub
           </a>
@@ -139,7 +181,12 @@
   </section>
 
   <footer>
-    <div class="ft-brand"><span class="nr">RALPHIE</span><span class="ns">STUDIOS</span></div>
+    <!-- Save images/logo-wordmark.png to activate -->
+    <img src="images/logo-wordmark.png" alt="Ralphie Studios" class="ft-logo-img"
+         onerror="this.style.display='none'; document.getElementById('ft-brand-text').style.display='block'">
+    <div class="ft-brand" id="ft-brand-text" style="display:none">
+      <span class="nr">RALPHIE</span><span class="ns">STUDIOS</span>
+    </div>
     <p>&copy; 2026 Ralphie Studios. All rights reserved.</p>
   </footer>
 

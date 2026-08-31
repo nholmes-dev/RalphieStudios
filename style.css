@@ -1,13 +1,13 @@
 /* ── Tokens ── */
 :root {
-  --bg:      #0C0A13;
-  --surf:    #131020;
-  --surf2:   #1C1730;
-  --border:  #251F3D;
-  --orange:  #F07820;
-  --blue:    #4A8FE0;
+  --bg:      #0d1120;
+  --surf:    #161d36;
+  --surf2:   #1e2849;
+  --border:  #273568;
+  --orange:  #fd8e37;
+  --blue:    #6aa3e8;
   --text:    #EDE8E1;
-  --muted:   #7C7292;
+  --muted:   #8494b8;
   --r: 10px;
 }
 
@@ -28,15 +28,16 @@ a { color: inherit; text-decoration: none; }
 /* ── Nav ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 1.25rem 2rem;
+  padding: 1rem 2rem;
   display: flex; align-items: center; justify-content: space-between;
   transition: background 0.3s, backdrop-filter 0.3s, border-bottom 0.3s;
 }
 nav.scrolled {
-  background: rgba(12,10,19,0.90);
+  background: rgba(22,29,54,0.94);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
 }
+.nav-logo-img { height: 38px; width: auto; }
 .nav-brand { font-family: 'Russo One', sans-serif; font-size: 1rem; letter-spacing: 0.03em; }
 .nav-brand .nr { color: var(--blue); }
 .nav-brand .ns { color: var(--orange); }
@@ -59,19 +60,11 @@ nav.scrolled {
 .hero-glow {
   position: absolute; inset: 0; pointer-events: none;
   background:
-    radial-gradient(ellipse 55% 55% at 33% 62%, rgba(240,120,32,0.09) 0%, transparent 70%),
-    radial-gradient(ellipse 55% 55% at 67% 38%, rgba(74,143,224,0.11) 0%, transparent 70%);
+    radial-gradient(ellipse 55% 55% at 33% 62%, rgba(253,142,55,0.09) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 55% at 67% 38%, rgba(106,163,232,0.11) 0%, transparent 70%);
 }
 .hero-content { position: relative; z-index: 2; max-width: 680px; }
-
-/* Logo image (uncomment in HTML once images/logo.png is in place) */
-.hero-logo-img {
-  max-height: 240px;
-  width: auto;
-  margin: 0 auto 1rem;
-}
-
-/* Wordmark fallback / default until logo image is added */
+.hero-logo-img { max-height: 280px; width: auto; margin: 0 auto; }
 .hero-wordmark { margin-bottom: 0; }
 .hero-name {
   font-family: 'Russo One', sans-serif;
@@ -161,8 +154,8 @@ hr.rule { border: none; border-top: 1px solid var(--border); }
   padding: 0.28rem 0.85rem; border-radius: 100px;
   border: 1px solid var(--border); color: var(--muted);
 }
-.pill.b { border-color: rgba(74,143,224,0.38); color: var(--blue); }
-.pill.o { border-color: rgba(240,120,32,0.38); color: var(--orange); }
+.pill.b { border-color: rgba(106,163,232,0.4); color: var(--blue); }
+.pill.o { border-color: rgba(253,142,55,0.4); color: var(--orange); }
 
 /* ── Games ── */
 .games-bg { background: var(--surf); }
@@ -172,25 +165,25 @@ hr.rule { border: none; border-top: 1px solid var(--border); }
   overflow: hidden; max-width: 860px; margin-top: 2.75rem;
   transition: border-color 0.25s;
 }
-.game-card:hover { border-color: rgba(240,120,32,0.45); }
+.game-card:hover { border-color: rgba(253,142,55,0.5); }
 .game-vis {
-  background: linear-gradient(145deg, #0D1627 0%, #0A1222 50%, #130D23 100%);
+  background: linear-gradient(145deg, #0d1627 0%, #0c1424 50%, #111a35 100%);
   display: flex; align-items: center; justify-content: center;
   min-height: 280px; position: relative; overflow: hidden;
 }
 .gv-glow {
   position: absolute; inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(74,143,224,0.14) 0%, transparent 65%);
+  background: radial-gradient(circle at 50% 50%, rgba(106,163,232,0.14) 0%, transparent 65%);
 }
 .gv-inner { position: relative; z-index: 1; text-align: center; }
 .game-ico {
   font-size: 3.75rem; line-height: 1; display: block; margin-bottom: 0.75rem;
-  filter: drop-shadow(0 0 22px rgba(74,143,224,0.38));
+  filter: drop-shadow(0 0 22px rgba(106,163,232,0.4));
 }
 .gv-tag {
   font-size: 0.62rem; font-weight: 600;
   letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(74,143,224,0.5);
+  color: rgba(106,163,232,0.55);
 }
 .game-info {
   padding: 2.5rem;
@@ -201,7 +194,7 @@ hr.rule { border: none; border-top: 1px solid var(--border); }
   font-size: 0.66rem; font-weight: 600;
   letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--blue);
-  border: 1px solid rgba(74,143,224,0.28); border-radius: 100px;
+  border: 1px solid rgba(106,163,232,0.3); border-radius: 100px;
   padding: 0.28rem 0.8rem; width: fit-content; margin-bottom: 1.2rem;
 }
 .bdot {
@@ -223,6 +216,50 @@ hr.rule { border: none; border-top: 1px solid var(--border); }
 }
 .mdot { width: 4px; height: 4px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
 
+/* ── Team ── */
+.team-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem; max-width: 760px; margin-top: 2.75rem;
+}
+.team-card {
+  background: var(--surf); border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+  transition: border-color 0.25s, transform 0.2s;
+}
+.team-card:hover { transform: translateY(-3px); }
+.team-card:nth-child(1):hover { border-color: rgba(253,142,55,0.5); }
+.team-card:nth-child(2):hover { border-color: rgba(106,163,232,0.5); }
+
+.team-photo-wrap {
+  position: relative; width: 100%; aspect-ratio: 1;
+  background: var(--surf2); overflow: hidden;
+}
+.team-photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover; object-position: top;
+}
+.team-photo-fallback {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 5rem;
+}
+.team-info { padding: 1.5rem; }
+.team-role {
+  display: inline-block;
+  font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.team-role.orange { color: var(--orange); }
+.team-role.blue { color: var(--blue); }
+.team-name {
+  font-family: 'Russo One', sans-serif;
+  font-size: 1.3rem; margin-bottom: 0.65rem;
+}
+.team-bio {
+  font-size: 0.85rem; color: var(--muted); line-height: 1.6;
+}
+
 /* ── Connect ── */
 .connect-inner { max-width: 520px; }
 .connect-inner p { color: var(--muted); margin-bottom: 2rem; }
@@ -242,6 +279,7 @@ footer {
   display: flex; align-items: center; justify-content: space-between;
   flex-wrap: wrap; gap: 1rem;
 }
+.ft-logo-img { height: 36px; width: auto; }
 .ft-brand { font-family: 'Russo One', sans-serif; font-size: 0.9rem; }
 .ft-brand .nr { color: var(--blue); }
 .ft-brand .ns { color: var(--orange); }
@@ -254,6 +292,7 @@ footer p { font-size: 0.76rem; color: var(--muted); }
 }
 @media (max-width: 700px) {
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .team-grid { grid-template-columns: 1fr; max-width: 380px; }
   section { padding: 4rem 1.25rem; }
   nav { padding: 1rem 1.25rem; }
   .nav-links { gap: 1.25rem; }
