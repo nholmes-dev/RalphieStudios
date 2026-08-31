@@ -49,6 +49,23 @@ nav.scrolled {
 }
 .nav-links a:hover { color: var(--text); }
 
+/* Hamburger */
+.nav-toggle {
+  display: none; background: none; border: none; cursor: pointer;
+  padding: 6px; color: var(--text); flex-direction: column;
+  gap: 5px; align-items: flex-end;
+}
+.nav-toggle span {
+  display: block; height: 2px; background: currentColor;
+  border-radius: 2px; transition: transform 0.22s, opacity 0.22s, width 0.22s;
+}
+.nav-toggle span:nth-child(1) { width: 22px; }
+.nav-toggle span:nth-child(2) { width: 16px; }
+.nav-toggle span:nth-child(3) { width: 22px; }
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { width: 22px; transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { width: 22px; transform: translateY(-7px) rotate(-45deg); }
+
 /* ── Hero ── */
 .hero {
   position: relative; min-height: 100vh;
@@ -301,11 +318,37 @@ footer p { font-size: 0.76rem; color: var(--muted); }
   .game-vis { min-height: 200px; }
 }
 @media (max-width: 700px) {
-  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .team-grid { grid-template-columns: 1fr; max-width: 380px; }
-  section { padding: 4rem 1.25rem; }
-  nav { padding: 1rem 1.25rem; }
-  .nav-links { gap: 1.25rem; }
+  nav { padding: 0.85rem 1.25rem; }
+  .nav-toggle { display: flex; }
+  .nav-links {
+    display: none; position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: rgba(22,29,54,0.97);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column; gap: 0;
+    padding: 0.5rem 0;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; }
+  .nav-links a {
+    display: block; padding: 0.9rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+  }
+  .nav-links li:last-child a { border-bottom: none; }
+  .hero { padding: 6rem 1.25rem 4rem; }
+  .hero-logo-img { max-height: clamp(160px, 55vw, 260px); }
+  .hero-tag { font-size: 1rem; }
+  .ctas { flex-direction: column; align-items: center; }
+  .ctas .btn { width: 100%; justify-content: center; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: 1fr; max-width: 360px; }
+  section { padding: 3.5rem 1.25rem; }
+  .sh { font-size: clamp(1.4rem, 6vw, 2rem); }
+  footer { flex-direction: column; align-items: flex-start; gap: 0.75rem; padding: 1.5rem 1.25rem; }
+  .ft-right { align-items: flex-start; }
 }
 
 /* ── Accessibility ── */

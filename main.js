@@ -1,7 +1,18 @@
-// Nav scroll
+// Nav scroll + hamburger
 const nav = document.getElementById('nav');
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
 const heroContent = document.querySelector('.hero-content');
 const hero = document.querySelector('.hero');
+
+navToggle.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', String(open));
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', 'false');
+}));
 
 addEventListener('scroll', () => {
   const y = scrollY;

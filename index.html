@@ -9,7 +9,8 @@
   <meta property="og:description" content="One developer. Big ideas. Games made with a whole lot of heart.">
   <meta property="og:url" content="https://ralphiestudios.com/">
   <meta property="og:type" content="website">
-  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
@@ -19,12 +20,15 @@
 
   <nav id="nav">
     <div class="nav-brand"><span class="nr">RALPHIE</span><span class="ns">STUDIOS</span></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#games">Games</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#connect">Connect</a></li>
     </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <section class="hero" id="home">

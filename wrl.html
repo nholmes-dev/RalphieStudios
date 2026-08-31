@@ -9,7 +9,8 @@
   <meta property="og:description" content="A new wheelchair rugby league game built in Unreal Engine 5. Follow development and test early PC builds.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="images/wrl-hero.jpg">
-  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
@@ -39,6 +40,7 @@
     }
     .wrl-cta a:hover { transform: translateY(-2px); opacity: 0.88; }
     #wrlNav .nav-links a:hover { color: var(--orange); }
+    #wrlNav .wrl-cta { display: flex; align-items: center; gap: 0.5rem; }
 
     /* ── Hero ── */
     .wrl-hero {
@@ -390,7 +392,22 @@
 
     /* ── Responsive ── */
     @media (max-width: 980px) {
-      #wrlNav .nav-links { display: none; }
+      #wrlNav .nav-links {
+        display: none; position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(13,17,32,0.97);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column; gap: 0; padding: 0.5rem 0;
+      }
+      #wrlNav .nav-links.open { display: flex; }
+      #wrlNav .nav-links li { width: 100%; }
+      #wrlNav .nav-links a {
+        display: block; padding: 0.9rem 1.5rem;
+        border-bottom: 1px solid var(--border); font-size: 0.85rem;
+      }
+      #wrlNav .nav-links li:last-child a { border-bottom: none; }
+      .wrl-cta-btn { display: none; }
       .wrl-hero-grid { grid-template-columns: 1fr; }
       .hero-meta-cards { display: none; }
       .game-grid { grid-template-columns: 1fr; }
@@ -460,7 +477,10 @@
       <li><a href="#connections">Connections</a></li>
     </ul>
     <div class="wrl-cta">
-      <a href="#alpha">Join Alpha</a>
+      <a href="#alpha" class="wrl-cta-btn">Join Alpha</a>
+      <button class="nav-toggle" id="wrlNavToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -691,6 +711,18 @@
   <script src="site-config.js"></script>
   <script>
     const wrlNav = document.getElementById('wrlNav');
+    const wrlNavToggle = document.getElementById('wrlNavToggle');
+    const wrlNavLinks = wrlNav.querySelector('.nav-links');
+
+    wrlNavToggle.addEventListener('click', () => {
+      const open = wrlNavLinks.classList.toggle('open');
+      wrlNavToggle.setAttribute('aria-expanded', String(open));
+    });
+    wrlNavLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      wrlNavLinks.classList.remove('open');
+      wrlNavToggle.setAttribute('aria-expanded', 'false');
+    }));
+
     const cfg = window.WRL_SITE_CONFIG?.playtest || {};
     const dlBtn = document.getElementById('playtestDl');
     const dlNote = document.getElementById('dlNote');
