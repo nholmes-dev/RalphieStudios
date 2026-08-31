@@ -30,9 +30,6 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 1rem 2rem;
   display: flex; align-items: center; justify-content: space-between;
-  transition: background 0.3s, backdrop-filter 0.3s, border-bottom 0.3s;
-}
-nav.scrolled {
   background: rgba(22,29,54,0.94);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
@@ -85,7 +82,7 @@ nav.scrolled {
   will-change: transform, opacity;
 }
 .hero-logo-img {
-  height: clamp(320px, 70vh, 90vh);
+  height: clamp(260px, 50vh, 65vh);
   width: auto; max-width: 95vw; margin: 0 auto 0;
 }
 .hero-wordmark { margin-bottom: 0; }

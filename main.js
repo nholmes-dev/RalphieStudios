@@ -17,9 +17,6 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
 addEventListener('scroll', () => {
   const y = scrollY;
 
-  // Nav solid background
-  nav.classList.toggle('scrolled', y > 40);
-
   // Hero scroll fade + drift up
   const heroH = hero.offsetHeight;
   const progress = Math.max(0, Math.min(y / (heroH * 0.55), 1));
