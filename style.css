@@ -26,7 +26,7 @@ img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 
 /* ── Nav ── */
-nav {
+#nav {
   display: none;
 }
 .nav-logo-img { height: 38px; width: auto; }
