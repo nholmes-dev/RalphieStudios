@@ -38,7 +38,7 @@ nav.scrolled {
   border-bottom: 1px solid var(--border);
 }
 .nav-logo-img { height: 38px; width: auto; }
-.nav-brand { font-family: 'Russo One', sans-serif; font-size: 1rem; letter-spacing: 0.03em; }
+.nav-brand { font-family: 'Russo One', sans-serif; font-size: 1rem; letter-spacing: 0.03em; text-decoration: none; }
 .nav-brand .nr { color: var(--blue); }
 .nav-brand .ns { color: var(--orange); }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
@@ -81,12 +81,12 @@ nav.scrolled {
     radial-gradient(ellipse 55% 55% at 67% 38%, rgba(106,163,232,0.11) 0%, transparent 70%);
 }
 .hero-content {
-  position: relative; z-index: 2; max-width: 900px;
+  position: relative; z-index: 2; max-width: 1200px;
   will-change: transform, opacity;
 }
 .hero-logo-img {
-  width: clamp(360px, 60vw, 780px);
-  height: auto; margin: 0 auto 0;
+  height: clamp(320px, 70vh, 90vh);
+  width: auto; max-width: 95vw; margin: 0 auto 0;
 }
 .hero-wordmark { margin-bottom: 0; }
 .hero-name {
