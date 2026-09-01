@@ -16,13 +16,25 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
 
 addEventListener('scroll', () => {
   const y = scrollY;
-
-  // Hero scroll fade + drift up
   const heroH = hero.offsetHeight;
-  const progress = Math.max(0, Math.min(y / (heroH * 0.55), 1));
-  heroContent.style.opacity = 1 - progress;
-  heroContent.style.transform = `translateY(${y * 0.28}px)`;
+  const progress = Math.max(0, Math.min(y / (heroH * 0.75), 1));
+
+  // Rockstar zoom: logo scales toward viewer and fades as sections slide over
+  heroContent.style.transform = `scale(${1 + progress * 0.18})`;
+  heroContent.style.opacity = Math.max(0, 1 - progress * 1.6);
 }, { passive: true });
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
 
 // Canvas particles — full hero coverage
 const cvs = document.getElementById('cvs');
@@ -32,14 +44,14 @@ let W, H, pts;
 function init() {
   W = cvs.width  = hero.offsetWidth;
   H = cvs.height = hero.offsetHeight;
-  pts = Array.from({ length: 180 }, () => ({
+  pts = Array.from({ length: 260 }, () => ({
     x: Math.random() * W,
     y: Math.random() * H,
-    r: Math.random() * 1.6 + 0.3,
-    vx: (Math.random() - 0.5) * 0.2,
-    vy: (Math.random() - 0.5) * 0.2,
+    r: Math.random() * 2.2 + 0.5,
+    vx: (Math.random() - 0.5) * 0.18,
+    vy: (Math.random() - 0.5) * 0.18,
     col: Math.random() > 0.5 ? 0 : 1,
-    a: Math.random() * 0.5 + 0.07
+    a: Math.random() * 0.55 + 0.2
   }));
 }
 

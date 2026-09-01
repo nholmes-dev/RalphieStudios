@@ -207,9 +207,11 @@ nav {
    ───────────────────────────────────────────────────────── */
 
 .hero {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 
-  min-height: 100vh;
+  height: 100vh;
 
   display: flex;
   align-items: center;
@@ -221,6 +223,40 @@ nav {
 
   overflow: hidden;
 }
+
+/* Sections slide over the sticky hero */
+hr.rule:first-of-type { display: none; }
+
+#about {
+  position: relative;
+  z-index: 10;
+  background: var(--bg);
+  border-radius: 28px 28px 0 0;
+  box-shadow: 0 -20px 60px rgba(0,0,0,0.55);
+  margin-top: -28px;
+}
+
+#projects, #team, #connect, footer {
+  position: relative;
+  z-index: 10;
+  background: var(--bg);
+}
+
+/* Scroll reveal */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+[data-reveal].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-reveal]:nth-child(2) { transition-delay: 0.12s; }
+[data-reveal]:nth-child(3) { transition-delay: 0.22s; }
+[data-reveal]:nth-child(4) { transition-delay: 0.32s; }
 
 #cvs {
   position: absolute;
