@@ -3135,7 +3135,7 @@ footer p {
   }
 
   .hero-logo-img {
-    width: clamp(280px,82vw,340px);
+    width: clamp(300px, 92vw, 380px);
     height: auto;
   }
 
@@ -3239,7 +3239,7 @@ footer p {
   }
 
   .visual-stack {
-    min-height: 400px;
+    min-height: 260px;
   }
 
   .visual-main {
@@ -3316,7 +3316,23 @@ footer p {
     clip-path: none;
   }
 
-  .wrl-back-label,
+  .alpha-panel h2 {
+    font-size: clamp(34px, 10vw, 48px);
+  }
+
+  .wrl-h2 {
+    font-size: clamp(26px, 8.5vw, 40px);
+    letter-spacing: -.01em;
+  }
+
+  .impact-h {
+    font-size: clamp(42px, 13vw, 62px);
+  }
+
+  .pt-copy h3 {
+    font-size: clamp(32px, 10vw, 44px);
+  }
+
   .wrl-game-lbl,
   .wrl-sep {
     display: none;
