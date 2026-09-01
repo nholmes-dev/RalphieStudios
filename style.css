@@ -858,13 +858,13 @@ hr.rule {
   background:
     radial-gradient(
       circle at 50% 40%,
-      rgba(32,159,96,.24),
-      transparent 58%
+      rgba(106,163,232,.08),
+      transparent 60%
     ),
     linear-gradient(
       145deg,
-      #07160f,
-      #081f16
+      #05070f,
+      #0b0f1e
     );
 }
 
