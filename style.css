@@ -1186,6 +1186,10 @@ footer p {
   transition: opacity .2s;
 }
 
+.wrl-back > span {
+  display: inline-flex;
+}
+
 .wrl-back:hover {
   opacity: .72;
 }
@@ -2938,6 +2942,10 @@ footer p {
 
 @media (max-width: 980px) {
 
+  #wrlNav {
+    justify-content: space-between;
+  }
+
   #wrlNav .nav-links {
     display: none;
 
@@ -3135,7 +3143,7 @@ footer p {
   }
 
   .hero-logo-img {
-    width: clamp(300px, 92vw, 380px);
+    width: min(96vw, 460px);
     height: auto;
   }
 
@@ -3325,8 +3333,13 @@ footer p {
     letter-spacing: -.01em;
   }
 
+  .impact-inner {
+    padding: 60px 1.5rem;
+  }
+
   .impact-h {
-    font-size: clamp(42px, 13vw, 62px);
+    font-size: clamp(26px, 8.5vw, 36px);
+    overflow-wrap: break-word;
   }
 
   .pt-copy h3 {
