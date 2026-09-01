@@ -475,7 +475,7 @@ hr.rule {
   align-items: start;
 }
 
-.about-text p {
+.about-text p:not(.eyebrow) {
   max-width: 52ch;
 
   margin-bottom: .9rem;
@@ -1048,7 +1048,7 @@ hr.rule {
   max-width: 560px;
 }
 
-.connect-inner p {
+.connect-inner p:not(.eyebrow) {
   margin-bottom: 2rem;
 
   color: var(--muted);
