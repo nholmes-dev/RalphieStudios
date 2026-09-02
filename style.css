@@ -3143,8 +3143,9 @@ footer p {
   }
 
   .hero-logo-img {
-    width: min(96vw, 460px);
-    height: auto;
+    height: clamp(300px, 46vh, 380px);
+    width: auto;
+    max-width: none;
   }
 
   .hero-tag {
