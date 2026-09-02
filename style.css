@@ -1039,7 +1039,11 @@ hr.rule {
   height: 100%;
 
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center 5%;
+}
+
+.team-card:last-child .team-photo {
+  object-position: center 65%;
 }
 
 .team-photo-fallback {
