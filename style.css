@@ -681,7 +681,7 @@ hr.rule {
 .game-vis {
   position: relative;
 
-  min-height: 300px;
+  min-height: 360px;
 
   display: flex;
   align-items: center;
@@ -705,11 +705,8 @@ hr.rule {
   width: 100%;
   height: 100%;
 
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
-
-  transform: scale(1.35);
-  transform-origin: center center;
 }
 
 .wrl-project-vis::after {
