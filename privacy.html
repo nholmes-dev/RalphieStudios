@@ -39,14 +39,39 @@
 </head>
 <body>
 
-  <nav id="nav">
-    <a href="/" class="nav-brand"><span class="nr">RALPHIE</span><span class="ns">STUDIOS</span></a>
+  <nav id="wrlNav">
+
+    <div class="wrl-left">
+
+      <a href="index.html" class="wrl-back" aria-label="Back to Ralphie Studios">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M19 12H5M12 5l-7 7 7 7"/>
+        </svg>
+        <span>
+          <span class="nr">RALPHIE</span>
+          <span class="ns wrl-back-label">STUDIOS</span>
+        </span>
+      </a>
+
+      <div class="wrl-sep" aria-hidden="true"></div>
+
+      <span class="wrl-game-lbl">Legal</span>
+
+    </div>
+
     <ul class="nav-links">
       <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#games">Games</a></li>
+      <li><a href="index.html#games">Projects</a></li>
       <li><a href="index.html#team">Team</a></li>
       <li><a href="index.html#connect">Connect</a></li>
     </ul>
+
+    <button class="nav-toggle" id="legalNavToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
   </nav>
 
   <div class="legal-page">
@@ -101,15 +126,31 @@
       <h2>Changes to This Policy</h2>
       <p>We may update this policy from time to time. The "last updated" date at the top of this page reflects the most recent revision.</p>
 
-      <hr class="legal-rule">
-      <p><a href="terms.html">Terms of Use</a> &nbsp;·&nbsp; <a href="index.html">Back to Home</a></p>
     </div>
   </div>
 
   <footer>
-    <a href="/" class="ft-logo-brand" style="text-decoration:none"><span class="nr">RALPHIE</span><span class="ns">STUDIOS</span></a>
-    <p>&copy; 2026 Ralphie Studios. All rights reserved.</p>
+    <a href="/" class="ft-logo-brand">
+      <span class="nr">RALPHIE</span><span class="ns">STUDIOS</span>
+    </a>
+    <div class="ft-right">
+      <p>&copy; 2026 Ralphie Studios. All rights reserved.</p>
+      <div class="ft-links">
+        <a href="terms.html">Terms of Use</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    const btn = document.getElementById('legalNavToggle');
+    const nav = document.getElementById('wrlNav');
+    btn.addEventListener('click', () => {
+      const open = nav.classList.toggle('nav-open');
+      btn.setAttribute('aria-expanded', open);
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+  </script>
 
 </body>
 </html>
