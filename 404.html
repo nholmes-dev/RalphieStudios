@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 — Ralphie Studios</title>
+  <meta name="robots" content="noindex,follow">
+  <meta name="description" content="Page not found — Ralphie Studios.">
+  <meta name="theme-color" content="#0f1835">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,14 +59,21 @@
 </head>
 <body>
 
-  <nav id="nav">
-    <a href="/" class="nav-brand"><span class="nr">RALPHIE</span><span class="ns">STUDIOS</span></a>
+  <nav id="wrlNav">
+    <div class="wrl-left">
+      <a href="index.html" class="wrl-back" aria-label="Back to Ralphie Studios">
+        <span><span class="nr">RALPHIE</span><span class="ns wrl-back-label">STUDIOS</span></span>
+      </a>
+      <div class="wrl-sep" aria-hidden="true"></div>
+      <span class="wrl-game-lbl">404</span>
+    </div>
     <ul class="nav-links">
       <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#games">Games</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
       <li><a href="index.html#team">Team</a></li>
-      <li><a href="index.html#connect">Connect</a></li>
+      <li><a href="index.html#connect">Contact</a></li>
     </ul>
+    <button class="nav-toggle" id="errorNavToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
 
   <div class="error-page">
@@ -78,6 +88,15 @@
   </div>
 
   <script>
+    const errorNav = document.getElementById('wrlNav');
+    const errorNavToggle = document.getElementById('errorNavToggle');
+    const errorNavLinks = errorNav.querySelector('.nav-links');
+    errorNavToggle.addEventListener('click', () => {
+      const open = errorNavLinks.classList.toggle('open');
+      errorNavToggle.setAttribute('aria-expanded', String(open));
+      errorNavToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+
     const cvs = document.getElementById('cvs');
     const cx = cvs.getContext('2d');
     let W, H, pts;

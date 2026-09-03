@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WRL Development Log | Ralphie Studios</title>
+  <meta name="description" content="Development log for the first Wheelchair Rugby League video game — mechanics, design decisions and Unreal Engine 5 development from Ralphie Studios.">
+  <meta property="og:title" content="Wheelchair Rugby League — Development Log">
+  <meta property="og:description" content="Follow the mechanics, decisions and development behind the first Wheelchair Rugby League video game.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ralphiestudios.com/devlog">
+  <meta property="og:image" content="https://ralphiestudios.com/images/gamepic.png">
+  <meta name="theme-color" content="#07101f">
+  <link rel="canonical" href="https://ralphiestudios.com/devlog">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="wrl-page devlog-page">
+  <nav id="wrlNav">
+    <div class="wrl-left">
+      <a href="wrl.html" class="wrl-back" aria-label="Back to Wheelchair Rugby League"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg><span><span class="nr">WRL</span><span class="ns wrl-back-label">THE GAME</span></span></a>
+      <div class="wrl-sep" aria-hidden="true"></div><span class="wrl-game-lbl">Development Log</span>
+    </div>
+    <ul class="nav-links"><li><a href="#devlog-001">001</a></li><li><a href="#devlog-002">002</a></li><li><a href="#devlog-003">003</a></li><li><a href="#coming">Coming Next</a></li></ul>
+    <div class="wrl-cta"><a href="wrl.html" class="wrl-cta-btn">Back to the Game</a><button class="nav-toggle" id="wrlNavToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+  </nav>
+
+  <header class="devlog-hero">
+    <div class="wrap" data-reveal>
+      <span class="wrl-eyebrow">WRL Development Log</span>
+      <h1>Why the mechanics<br><span>work the way they do.</span></h1>
+      <p>Not patch notes. Each entry starts with the real Wheelchair Rugby League reason for a mechanic, then follows it into gameplay, player attributes and the Unreal Engine 5 implementation.</p>
+      <div class="devlog-hero-meta"><span>Pre-Alpha</span><span>Unreal Engine 5</span><span>Blueprint-led development</span><span>Started 2026</span></div>
+    </div>
+  </header>
+
+  <main class="devlog-archive">
+    <section class="dev-article-full" id="devlog-001">
+      <div class="wrap">
+        <div class="dev-article-heading" data-reveal><div><span class="dev-index">DEVLOG 001 · CHAIR MECHANICS</span><h2>Body Position Matters:<br><em>Building Leaning &amp; Agility</em></h2></div><span class="dev-state working">Working in-game</span></div>
+        <div class="dev-article-grid" data-reveal>
+          <article><h3>Why it matters in WRL</h3><p>A player is not fixed upright in a sports wheelchair. Body position changes reach, balance, space and how difficult a shoulder tag is to access. Leaning therefore needs to be part of the player's decisions, not simply an animation layered over movement.</p></article>
+          <article><h3>How it works in-game</h3><p>Lean mode gives the right stick direct control over upper-body position. The player can move the torso directionally while driving, making leaning a deliberate gameplay input that can be combined with steering and sprinting.</p></article>
+          <article><h3>Player / stat interaction</h3><p>Agility controls maximum sideways lean. The current mapping runs from roughly <strong>6°</strong> at very low Agility to around <strong>22°</strong> at maximum Agility, giving players genuinely different functional movement ranges.</p></article>
+          <article><h3>Development / UE5 notes</h3><p>The system is being built primarily in Blueprints and reads player data directly. The important design rule is that ratings should connect to behaviour rather than live only on a roster screen.</p></article>
+          <article><h3>What comes next</h3><p>Lean position feeds naturally into stability and, later, physical tag accessibility. The intended tackle model can consider shoulder-tag world position, defender reach, angle, attacker lean and contact state rather than applying a generic tackle-resistance bonus.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dev-article-full alternate" id="devlog-002">
+      <div class="wrap">
+        <div class="dev-article-heading" data-reveal><div><span class="dev-index">DEVLOG 002 · GAMEPLAY</span><h2>Using Your Weight:<br><em>Leaning Changes Chair Handling</em></h2></div><span class="dev-state working">Working in-game</span></div>
+        <div class="dev-article-grid" data-reveal>
+          <article><h3>Why it matters in WRL</h3><p>Body position in a sports wheelchair is part of driving. The same player can make a different turn or create a different burst of speed depending on how committed their body position is.</p></article>
+          <article><h3>How it works in-game</h3><p>Forward lean during sprinting can provide a small speed advantage. Leaning into the direction of a turn increases rotation, allowing more aggressive committed turns and making the chair feel less like a character controller on wheels.</p></article>
+          <article><h3>Player / stat interaction</h3><p>Because Agility controls the available lean range, agile players have more body-position range to exploit. The benefit therefore emerges from the same underlying player attribute rather than from a separate invisible bonus.</p></article>
+          <article><h3>Development / UE5 notes</h3><p>Current tuning reaches about <strong>5%</strong> maximum forward-lean sprint boost and roughly <strong>40%</strong> lean-assisted turn boost. Analogue diagonal input was also corrected so controller movement remains consistent through mixed steering inputs.</p></article>
+          <article><h3>What comes next</h3><p>The performance benefit comes with risk. The same lean direction used to attack a corner will feed the stability model, so good body position should help a player hold the chair while poor positioning can move them closer to tipping.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dev-article-full" id="devlog-003">
+      <div class="wrap">
+        <div class="dev-article-heading" data-reveal><div><span class="dev-index">DEVLOG 003 · CHAIR MECHANICS</span><h2>Finding the<br><em>Tipping Point</em></h2></div><span class="dev-state next">Up next</span></div>
+        <div class="dev-article-grid" data-reveal>
+          <article><h3>Why it matters in WRL</h3><p>Fast turns, poor body position and contact all affect chair stability. If the game is going to capture the physical decisions of WRL, tipping cannot just be a random physics accident.</p></article>
+          <article><h3>How it should work</h3><p>Speed, steering input, lean direction and eventually contact will combine into a stability calculation. Leaning into a turn should help. Leaning away from it should make the chair less secure.</p></article>
+          <article><h3>Player / stat interaction</h3><p>Agility and Recovery can give players different margins for control and recovery. Contact-related attributes can later influence how collisions add instability, avoiding one universal tipping threshold for every player.</p></article>
+          <article><h3>Development / UE5 target</h3><p>The target is a readable transition: visible wheel lift or chair tilt first, then a recoverable danger state, then a full fall only when instability becomes too great. The player should have a chance to save it.</p></article>
+          <article><h3>What comes next</h3><p>Contact will feed into the stability system. A ball carrier tipping while in possession can then become one valid tackle outcome alongside shoulder-tag removal.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrl-s devlog-coming" id="coming">
+      <div class="wrap">
+        <span class="wrl-eyebrow" data-reveal>Coming Through the Devlog</span>
+        <h2 class="wrl-h2" data-reveal>There is plenty<em>left to tell.</em></h2>
+        <div class="dev-queue" data-reveal>
+          <article><span>04 / MATCH SYSTEMS</span><h3>What Counts as a Tackle?</h3><p>Tags, defender reach, chair contact, tipping, big-wheel defence and the restart that follows.</p></article>
+          <article><span>05 / PASSING</span><h3>No Forward Passes</h3><p>How left/right passing respects the defining WRL rule, then evolves into tap/hold power and teammate targeting.</p></article>
+          <article><span>06 / SCORING</span><h3>Scoring Has to Be Deliberate</h3><p>Why tries require a player input in-goal, how Home/Away zones work, and how scoring connects to match state.</p></article>
+          <article><span>07 / PLAYERS</span><h3>Stats That Change the Game</h3><p>Speed, Agility, Handling, Tackling, Aggression, Passing, Kicking, Recovery and the move toward individual traits.</p></article>
+          <article><span>08 / TEAMS</span><h3>From One Player to 5v5</h3><p>Roster loading, AI, switching, control modes and making a full team feel coherent rather than ten separate characters.</p></article>
+          <article><span>09 / PRESENTATION</span><h3>Building Match Day</h3><p>Venues, kits, crowds, officials, camera language, replays and the broadcast identity that will sit on top of the gameplay.</p></article>
+        </div>
+        <div class="devlog-back-cta" data-reveal><a class="btn-wrl-p" href="wrl.html">Back to the Game →</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><a href="index.html" class="ft-logo-brand"><span class="nr">RALPHIE</span><span class="ns">STUDIOS</span></a><div class="ft-right"><p>&copy; 2026 Ralphie Studios. Wheelchair Rugby League — in development.</p><div class="ft-links"><a href="wrl.html">The Game</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></div></div></footer>
+
+  <script>
+    const wrlNav = document.getElementById('wrlNav');
+    const wrlNavToggle = document.getElementById('wrlNavToggle');
+    const wrlNavLinks = wrlNav.querySelector('.nav-links');
+    wrlNavToggle.addEventListener('click', () => { const open = wrlNavLinks.classList.toggle('open'); wrlNavToggle.setAttribute('aria-expanded', String(open)); wrlNavToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); });
+    wrlNavLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { wrlNavLinks.classList.remove('open'); wrlNavToggle.setAttribute('aria-expanded', 'false'); }));
+    window.addEventListener('scroll', () => wrlNav.classList.toggle('scrolled', scrollY > 30), { passive: true });
+    const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }), { threshold: .08 });
+    document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>

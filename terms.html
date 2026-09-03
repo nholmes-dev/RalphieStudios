@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terms of Use — Ralphie Studios</title>
+  <meta name="description" content="Terms governing use of the Ralphie Studios website.">
+  <meta name="theme-color" content="#0f1835">
+  <link rel="canonical" href="https://ralphiestudios.com/terms">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,7 +64,7 @@
 
     <ul class="nav-links">
       <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#games">Projects</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
       <li><a href="index.html#team">Team</a></li>
       <li><a href="index.html#connect">Contact</a></li>
     </ul>
@@ -78,7 +81,7 @@
     <div class="legal-wrap">
       <p class="eyebrow">Legal</p>
       <h1>Terms of Use</h1>
-      <p class="legal-meta">Last updated: 31 August 2026</p>
+      <p class="legal-meta">Last updated: 3 September 2026</p>
 
       <p>These Terms of Use govern your access to and use of the Ralphie Studios website at <strong>ralphiestudios.com</strong> (the "Site"). By using the Site, you agree to these terms. If you do not agree, please do not use the Site.</p>
 
@@ -95,8 +98,8 @@
       </ul>
 
       <h2>Intellectual Property</h2>
-      <p>All content on this Site — including text, graphics, logos, images, and game assets — is the property of Ralphie Studios and is protected by applicable intellectual property laws. The Ralphie Studios name, logo, and mascot may not be used without our express written permission.</p>
-      <p>Unreal Engine is a product of Epic Games, Inc. All other third-party trademarks referenced on this Site are the property of their respective owners.</p>
+      <p>Unless otherwise stated, original content created by Ralphie Studios — including original text, graphics, branding, code and game assets — is owned by Ralphie Studios and is protected by applicable intellectual property laws. The Ralphie Studios name, logo, and mascot may not be used without our express written permission.</p>
+      <p>Third-party photographs, logos, trademarks and other materials remain the property of their respective rights holders. Their appearance on the Site does not transfer ownership to Ralphie Studios or imply endorsement, licensing, sponsorship or partnership unless separately stated. Unreal Engine is a product of Epic Games, Inc.</p>
 
       <h2>Disclaimer of Warranties</h2>
       <p>The Site is provided on an "as is" and "as available" basis without warranties of any kind, either express or implied. We do not warrant that the Site will be uninterrupted, error-free, or free of viruses or other harmful components.</p>
@@ -139,11 +142,16 @@
   <script>
     const btn = document.getElementById('legalNavToggle');
     const nav = document.getElementById('wrlNav');
+    const links = nav.querySelector('.nav-links');
     btn.addEventListener('click', () => {
-      const open = nav.classList.toggle('nav-open');
-      btn.setAttribute('aria-expanded', open);
+      const open = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
       btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      links.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }));
   </script>
 
 </body>

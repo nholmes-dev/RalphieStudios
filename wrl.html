@@ -1,1135 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Wheelchair Rugby League — The Game | Ralphie Studios</title>
-
-  <meta
-    name="description"
-    content="The first Wheelchair Rugby League video game. A fast, physical sports game in development at Ralphie Studios, built in Unreal Engine 5."
-  >
-
+  <meta name="description" content="The first Wheelchair Rugby League video game. Built specifically around the speed, contact, skill and chair-first mechanics of Wheelchair Rugby League in Unreal Engine 5.">
   <meta property="og:title" content="Wheelchair Rugby League — The Game">
-  <meta property="og:description" content="The first Wheelchair Rugby League video game, built in Unreal Engine 5. Follow development, mechanics and future playtests.">
+  <meta property="og:description" content="The first Wheelchair Rugby League video game. Feel the impact. Own the court.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ralphiestudios.com/wrl">
-  <meta property="og:image" content="images/wrl-hero.jpg">
+  <meta property="og:image" content="https://ralphiestudios.com/images/gamepic.png">
   <meta name="theme-color" content="#07101f">
   <link rel="canonical" href="https://ralphiestudios.com/wrl">
-
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Russo+One&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
-    rel="stylesheet"
-  >
-
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
-
-  <style>
-    /* WRL development-hub enhancements — intentionally layered on top of style.css */
-    .dev-pulse {
-      margin-top: 34px;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(5,12,25,.58);
-      backdrop-filter: blur(12px);
-    }
-    .dev-pulse-item { padding: 20px 22px; position: relative; min-height: 104px; }
-    .dev-pulse-item + .dev-pulse-item { border-left: 1px solid rgba(255,255,255,.1); }
-    .dev-pulse-item span { display:block; margin-bottom:8px; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; opacity:.62; font-weight:700; }
-    .dev-pulse-item strong { display:block; font-family:'Russo One',sans-serif; font-size:1rem; line-height:1.25; font-weight:400; }
-    .dev-pulse-item.current::before { content:''; position:absolute; inset:0 auto 0 0; width:3px; background:#ff7a1a; }
-
-    .dev-card { position:relative; overflow:hidden; }
-    .dev-card::after { content:''; position:absolute; inset:auto 0 0; height:2px; transform:scaleX(0); transform-origin:left; background:linear-gradient(90deg,#ff7a1a,#2598ff); transition:transform .25s ease; }
-    .dev-card:hover::after { transform:scaleX(1); }
-    .dev-card-link { color:inherit; text-decoration:none; display:block; height:100%; }
-    .dev-index { font-family:'Russo One',sans-serif; font-size:.72rem; letter-spacing:.12em; opacity:.55; margin-bottom:14px; display:block; }
-    .dev-state { display:inline-flex; align-items:center; gap:7px; font-size:.68rem; font-weight:800; letter-spacing:.09em; text-transform:uppercase; }
-    .dev-state::before { content:''; width:7px; height:7px; border-radius:50%; background:currentColor; box-shadow:0 0 0 4px rgba(255,255,255,.06); }
-    .dev-state.working { color:#62e59a; }
-    .dev-state.next { color:#ff9b4a; }
-    .dev-read { display:flex; align-items:center; justify-content:space-between; gap:12px; }
-    .dev-read::after { content:'→'; font-size:1.1em; transition:transform .2s ease; }
-    .dev-card:hover .dev-read::after { transform:translateX(4px); }
-
-    .dev-articles { margin-top:46px; display:grid; gap:22px; }
-    .dev-article { scroll-margin-top:100px; border:1px solid rgba(255,255,255,.11); background:linear-gradient(145deg,rgba(9,21,39,.96),rgba(5,13,28,.9)); position:relative; overflow:hidden; }
-    .dev-article::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#ff7a1a 0 34%,#2598ff 34% 100%); }
-    .dev-article-head { padding:30px 32px 22px; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:24px; align-items:start; }
-    .dev-article-kicker { font-size:.72rem; letter-spacing:.13em; text-transform:uppercase; font-weight:800; opacity:.58; margin-bottom:10px; }
-    .dev-article h3 { font-family:'Russo One',sans-serif; font-weight:400; font-size:clamp(1.5rem,3vw,2.35rem); margin:0; line-height:1.05; }
-    .dev-article-status { padding:8px 10px; border:1px solid rgba(255,255,255,.14); font-size:.68rem; letter-spacing:.09em; text-transform:uppercase; font-weight:800; white-space:nowrap; }
-    .dev-article-body { padding:0 32px 32px; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:0; }
-    .dev-article-block { padding:22px; border-top:1px solid rgba(255,255,255,.09); }
-    .dev-article-block + .dev-article-block { border-left:1px solid rgba(255,255,255,.09); }
-    .dev-article-block h4 { margin:0 0 10px; font-family:'Russo One',sans-serif; font-size:.78rem; font-weight:400; text-transform:uppercase; letter-spacing:.06em; color:#ff9b4a; }
-    .dev-article-block p { margin:0; font-size:.92rem; line-height:1.62; opacity:.82; }
-    .dev-article-block code { font-family:inherit; color:#8bc8ff; }
-    .devlog-foot { margin-top:26px; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:20px 22px; border-left:3px solid #2598ff; background:rgba(37,152,255,.07); }
-    .devlog-foot strong { font-family:'Russo One',sans-serif; font-weight:400; }
-    .devlog-foot p { margin:4px 0 0; opacity:.72; }
-
-    .alpha-honesty { margin-top:10px; font-size:.78rem; line-height:1.45; opacity:.64; max-width:480px; }
-    .alpha-honesty strong { color:#fff; opacity:1; }
-
-    @media (max-width: 980px) {
-      .dev-pulse { grid-template-columns:repeat(2,minmax(0,1fr)); }
-      .dev-pulse-item:nth-child(3) { border-left:0; border-top:1px solid rgba(255,255,255,.1); }
-      .dev-pulse-item:nth-child(4) { border-top:1px solid rgba(255,255,255,.1); }
-      .dev-article-body { grid-template-columns:1fr; }
-      .dev-article-block + .dev-article-block { border-left:0; }
-    }
-    @media (max-width: 620px) {
-      .dev-pulse { grid-template-columns:1fr; }
-      .dev-pulse-item + .dev-pulse-item { border-left:0; border-top:1px solid rgba(255,255,255,.1); }
-      .dev-article-head { grid-template-columns:1fr; padding:26px 22px 18px; }
-      .dev-article-status { justify-self:start; }
-      .dev-article-body { padding:0 22px 24px; }
-      .dev-article-block { padding:18px 0; }
-      .devlog-foot { align-items:flex-start; flex-direction:column; }
-    }
-  </style>
-
 </head>
-
 <body class="wrl-page">
 
-  <!-- WRL NAV -->
   <nav id="wrlNav">
-
     <div class="wrl-left">
-
-      <a
-        href="index.html"
-        class="wrl-back"
-        aria-label="Back to Ralphie Studios"
-      >
-
-        <svg
-          width="13"
-          height="13"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M19 12H5M12 5l-7 7 7 7"/>
-        </svg>
-
-        <span>
-          <span class="nr">RALPHIE</span>
-          <span class="ns wrl-back-label">STUDIOS</span>
-        </span>
-
+      <a href="index.html" class="wrl-back" aria-label="Back to Ralphie Studios">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        <span><span class="nr">RALPHIE</span><span class="ns wrl-back-label">STUDIOS</span></span>
       </a>
-
       <div class="wrl-sep" aria-hidden="true"></div>
-
-      <span class="wrl-game-lbl">
-        Wheelchair Rugby League
-      </span>
-
+      <span class="wrl-game-lbl">Wheelchair Rugby League</span>
     </div>
 
     <ul class="nav-links">
       <li><a href="#game">The Game</a></li>
-      <li><a href="#devlog">Devlog</a></li>
-      <li><a href="#roadmap">Roadmap</a></li>
-      <li><a href="#playtest">Playtest</a></li>
+      <li><a href="#gameplay">Gameplay</a></li>
+      <li><a href="#players">Players</a></li>
+      <li><a href="#future">Road Ahead</a></li>
+      <li><a href="devlog.html">Devlog</a></li>
       <li><a href="#connections">Connections</a></li>
     </ul>
 
     <div class="wrl-cta">
-
-      <a href="#alpha" class="wrl-cta-btn">
-        Join Alpha
-      </a>
-
-      <button
-        class="nav-toggle"
-        id="wrlNavToggle"
-        aria-label="Open menu"
-        aria-expanded="false"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
+      <a href="devlog.html" class="wrl-cta-btn">Latest Development</a>
+      <button class="nav-toggle" id="wrlNavToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
-
   </nav>
 
-  <!-- HERO -->
   <section class="wrl-hero" id="top">
-
-    <div class="wrl-hero-media" aria-hidden="true">
-      <img src="images/wrl-hero.jpg" alt="">
-    </div>
-
+    <div class="wrl-hero-media" aria-hidden="true"><img src="images/wrl-hero.jpg" alt=""></div>
     <div class="wrl-hero-inner">
-
       <div class="wrap wrl-hero-grid">
-
         <div>
-
-          <div class="status-pill">
-            <span class="status-dot"></span>
-            Pre-Alpha &middot; Core Gameplay Development
-          </div>
-
-          <div class="wrl-first-game">
-            The first Wheelchair Rugby League video game
-          </div>
-
-          <h1 class="wrl-h1">
-            <span class="l1">Feel the</span>
-            <span class="l2">impact.</span>
-            <span class="l3">Own the court.</span>
-          </h1>
-
-          <p class="wrl-hero-copy">
-            Built specifically for Wheelchair Rugby League — not adapted from a
-            standing-rugby game. The aim is to capture the speed, contact, skill,
-            tactical decisions and personality of the real sport through chair-first
-            mechanics and a bold match-day presentation.
-          </p>
-
+          <div class="status-pill"><span class="status-dot"></span>Pre-Alpha &middot; Core Gameplay Development</div>
+          <div class="wrl-first-game">The first Wheelchair Rugby League video game</div>
+          <h1 class="wrl-h1"><span class="l1">Feel the</span><span class="l2">impact.</span><span class="l3">Own the court.</span></h1>
+          <p class="wrl-hero-copy">Built specifically for Wheelchair Rugby League — not adapted from a standing-rugby game. Chair control, body position, contact, passing rules and player individuality are being designed around the sport itself.</p>
           <div class="wrl-actions">
-
-            <a class="btn-wrl-p" href="#alpha">
-              Join the Alpha Waitlist →
-            </a>
-
-            <a class="btn-wrl-g" href="#devlog">
-              Follow Development
-            </a>
-
+            <a class="btn-wrl-p" href="#game">Explore the Game →</a>
+            <a class="btn-wrl-g" href="devlog.html">Development Log</a>
           </div>
-
         </div>
 
         <aside class="hero-meta-cards" aria-label="Project summary">
-
-          <div class="meta-card">
-            <div>
-              <span>Game format</span>
-              <strong>5v5 WRL</strong>
-            </div>
-          </div>
-
-          <div class="meta-card">
-            <div>
-              <span>Current stage</span>
-              <strong>Pre-Alpha</strong>
-            </div>
-          </div>
-
-          <div class="meta-card">
-            <div>
-              <span>Engine</span>
-              <strong>Unreal Engine 5</strong>
-            </div>
-          </div>
-
-          <div class="meta-card">
-            <div>
-              <span>Target platforms</span>
-              <strong>PC &middot; Xbox &middot; PS5</strong>
-            </div>
-          </div>
-
+          <div class="meta-card"><div><span>Game vision</span><strong>5v5 WRL</strong></div></div>
+          <div class="meta-card"><div><span>Current stage</span><strong>Pre-Alpha</strong></div></div>
+          <div class="meta-card"><div><span>Engine</span><strong>Unreal Engine 5</strong></div></div>
+          <div class="meta-card"><div><span>Development</span><strong>Blueprint-led</strong></div></div>
         </aside>
-
       </div>
-
     </div>
-
-    <div class="scroll-cue" aria-hidden="true">
-      Scroll to enter the game
-    </div>
-
+    <div class="scroll-cue" aria-hidden="true">Scroll to enter the game</div>
   </section>
 
-  <!-- TICKER -->
-  <div class="wrl-ticker" aria-hidden="true">
-
-    <div class="ticker-track">
-      <span>Speed</span>
-      <span>Contact</span>
-      <span>Skill</span>
-      <span>Momentum</span>
-      <span>Positioning</span>
-      <span>Authenticity</span>
-
-      <span>Speed</span>
-      <span>Contact</span>
-      <span>Skill</span>
-      <span>Momentum</span>
-      <span>Positioning</span>
-      <span>Authenticity</span>
-    </div>
-
-  </div>
+  <div class="wrl-ticker" aria-hidden="true"><div class="ticker-track">
+    <span>Speed</span><span>Contact</span><span>Skill</span><span>Momentum</span><span>Positioning</span><span>Authenticity</span>
+    <span>Speed</span><span>Contact</span><span>Skill</span><span>Momentum</span><span>Positioning</span><span>Authenticity</span>
+  </div></div>
 
   <main>
-
-    <!-- THE GAME -->
     <section class="wrl-s" id="game">
-
       <div class="wrap">
-
         <div class="game-grid">
-
           <div data-reveal>
-
-            <span class="wrl-eyebrow">
-              The Vision
-            </span>
-
-            <h2 class="wrl-h2">
-              Not a reskin.
-              <em>Built for Wheelchair Rugby League.</em>
-            </h2>
-
-            <p class="wrl-lead">
-              The aim is to make a sports game that feels specific to the real
-              thing: chair momentum, body position, passing under pressure, hard
-              collisions, team shape, player individuality and the controlled
-              chaos that makes Wheelchair Rugby League brilliant to watch and play.
-            </p>
-
+            <span class="wrl-eyebrow">Built for the Sport</span>
+            <h2 class="wrl-h2">Not a reskin.<em>Built around the chair.</em></h2>
+            <p class="wrl-lead">Wheelchair Rugby League has its own rhythm. Momentum matters. Body position matters. Space closes differently. A pass cannot simply go anywhere. Contact can change the whole play. The game is being built around those differences from the start.</p>
             <div class="feat-grid">
-
-              <article class="feat">
-                <span class="feat-num">01 / MOVEMENT</span>
-                <h3>Chair-first handling</h3>
-                <p>
-                  Acceleration, momentum, steering, pushing and body position
-                  designed around the behaviour of a sports wheelchair.
-                </p>
-              </article>
-
-              <article class="feat">
-                <span class="feat-num">02 / GAMEPLAY</span>
-                <h3>Real match systems</h3>
-                <p>
-                  Passing, kicking, possession, tries, tackling, tags, tipping
-                  and restarts developed as connected gameplay systems.
-                </p>
-              </article>
-
-              <article class="feat">
-                <span class="feat-num">03 / PLAYERS</span>
-                <h3>Attributes you can feel</h3>
-                <p>
-                  Speed, acceleration, agility, handling, tackling and other
-                  ratings are intended to change how individual players actually
-                  behave on court.
-                </p>
-              </article>
-
-              <article class="feat">
-                <span class="feat-num">04 / IDENTITY</span>
-                <h3>Built from the community</h3>
-                <p>
-                  Player personalities, chairs, kits, venues and presentation
-                  designed to give the sport and its people a genuine identity.
-                </p>
-              </article>
-
+              <article class="feat"><span class="feat-num">01 / CONTROL</span><h3>Chair-first handling</h3><p>Acceleration, momentum, grip, sprinting, steering and pushing combine to make the chair itself part of the skill ceiling.</p></article>
+              <article class="feat"><span class="feat-num">02 / BODY</span><h3>Position has purpose</h3><p>Leaning changes handling now and is being connected to stability, recovery and how reachable a shoulder tag actually is.</p></article>
+              <article class="feat"><span class="feat-num">03 / RULES</span><h3>WRL, not generic rugby</h3><p>Passing respects the no-forward-pass rule, scoring is deliberate, and tackling is being built around tags, tipping and chair contact.</p></article>
+              <article class="feat"><span class="feat-num">04 / IDENTITY</span><h3>Players, not presets</h3><p>Attributes and traits are intended to change what each player can do, not simply decorate a team-selection screen.</p></article>
             </div>
-
           </div>
-
           <div class="visual-stack" data-reveal>
-
-            <figure class="visual-main">
-
-              <img
-                src="images/wrl-lineup.jpg"
-                alt="Wheelchair Rugby League players"
-              >
-
-              <figcaption class="visual-label">
-                <small>Built from the sport</small>
-                Character. Rivalry. Energy.
-              </figcaption>
-
-            </figure>
-
-            <img
-              class="visual-secondary"
-              src="images/wrl-portrait.jpg"
-              alt="Wheelchair Rugby League player"
-            >
-
-          </div>
-
-        </div>
-
-        <div class="dev-pulse" data-reveal aria-label="Current development snapshot">
-          <div class="dev-pulse-item">
-            <span>Already playable</span>
-            <strong>Movement · Passing · Kicking · Tries</strong>
-          </div>
-          <div class="dev-pulse-item">
-            <span>Match foundation</span>
-            <strong>Possession · Scoreboard · Match clock</strong>
-          </div>
-          <div class="dev-pulse-item current">
-            <span>Current focus</span>
-            <strong>Chair stability &amp; tipping</strong>
-          </div>
-          <div class="dev-pulse-item">
-            <span>Then</span>
-            <strong>Tags · Contact tackling · Restarts</strong>
+            <figure class="visual-main"><img src="images/wrl-lineup.jpg" alt="Wheelchair Rugby League players"><figcaption class="visual-label"><small>Built from the sport</small>Speed. Contact. Personality.</figcaption></figure>
+            <img class="visual-secondary" src="images/wrl-portrait.jpg" alt="Wheelchair Rugby League player">
           </div>
         </div>
-
       </div>
-
     </section>
 
-    <!-- DEVELOPMENT LOG -->
-    <section class="wrl-s devlog-bg" id="devlog">
-
+    <section class="wrl-s gameplay-showcase" id="gameplay">
       <div class="wrap">
-
-        <div class="devlog-head" data-reveal>
-
-          <div>
-
-            <span class="wrl-eyebrow">
-              Development Log
-            </span>
-
-            <h2 class="wrl-h2">
-              Built one mechanic
-              <em>at a time.</em>
-            </h2>
-
-            <p class="wrl-lead">
-              Development updates are about more than ticking features off a list.
-              They show why each system exists, how it relates to the real sport
-              and how individual mechanics connect together.
-            </p>
-
-          </div>
-
-          <span class="devlog-status">
-            Development diary &middot; 2026
-          </span>
-
+        <div class="showcase-head" data-reveal>
+          <div><span class="wrl-eyebrow">The Game</span><h2 class="wrl-h2">More than movement.<em>Build the whole play.</em></h2></div>
+          <p class="wrl-lead">The foundations already go beyond a wheelchair prototype. Movement, possession, passing, kicking, scoring and match state are beginning to connect into a real game loop.</p>
         </div>
 
-        <div class="devlog-grid" data-reveal>
-
-          <article class="dev-card dev-card-featured">
-            <a class="dev-card-link" href="#devlog-001">
-              <span class="dev-index">DEVLOG 001</span>
-              <div class="dev-meta">
-                <span class="dev-tag">Chair Mechanics</span>
-                <span class="dev-state working">Working in-game</span>
-              </div>
-              <h3>Body Position Matters</h3>
-              <p>
-                Leaning is a true gameplay input, not just an animation. The right
-                stick controls upper-body position while Agility determines the
-                functional movement range available to each player.
-              </p>
-              <div class="dev-points">
-                <span>Approx. 6°–22° lateral lean range</span>
-                <span>Agility drives maximum lean</span>
-                <span>Built to affect future tag accessibility</span>
-              </div>
-              <div class="dev-read">Read development breakdown</div>
-            </a>
+        <div class="gameplay-grid" data-reveal>
+          <article class="gameplay-card gameplay-card-large">
+            <span class="gameplay-status working">Working in-game</span><span class="gameplay-num">01</span>
+            <h3>Control the chair</h3><p>Build speed through acceleration, carry momentum, find grip through turns, sprint, push and use upper-body position to change how the chair responds.</p>
+            <div class="gameplay-tags"><span>Acceleration</span><span>Momentum</span><span>Grip</span><span>Sprint</span><span>Leaning</span></div>
           </article>
-
-          <article class="dev-card">
-            <a class="dev-card-link" href="#devlog-002">
-              <span class="dev-index">DEVLOG 002</span>
-              <div class="dev-meta">
-                <span class="dev-tag">Gameplay</span>
-                <span class="dev-state working">Working in-game</span>
-              </div>
-              <h3>Using Your Weight</h3>
-              <p>
-                Body position now changes chair performance. Forward lean can add a
-                small sprint advantage, while leaning into a turn allows more
-                aggressive rotation and more expressive handling.
-              </p>
-              <div class="dev-points">
-                <span>Up to ~5% sprint boost</span>
-                <span>Current lean-turn boost ~40%</span>
-                <span>Improved analogue diagonal input</span>
-              </div>
-              <div class="dev-read">Read development breakdown</div>
-            </a>
-          </article>
-
-          <article class="dev-card">
-            <a class="dev-card-link" href="#devlog-003">
-              <span class="dev-index">DEVLOG 003</span>
-              <div class="dev-meta">
-                <span class="dev-tag">Chair Mechanics</span>
-                <span class="dev-state next">Up next</span>
-              </div>
-              <h3>Finding the Tipping Point</h3>
-              <p>
-                Speed, steering, lean direction and eventually contact will combine
-                into a stability system. The aim is readable risk — not random falls.
-              </p>
-              <div class="dev-points">
-                <span>Correct lean should reduce risk</span>
-                <span>Wrong-way lean should increase risk</span>
-                <span>Visible lift before a full tip</span>
-              </div>
-              <div class="dev-read">See what is being built next</div>
-            </a>
-          </article>
-
+          <article class="gameplay-card"><span class="gameplay-status working">Working in-game</span><span class="gameplay-num">02</span><h3>Play the ball</h3><p>Pick up possession, pass left or right without breaking the WRL forward-pass rule, and kick forward with a controlled arc.</p><div class="gameplay-tags"><span>Possession</span><span>Passing</span><span>Kicking</span></div></article>
+          <article class="gameplay-card"><span class="gameplay-status working">Working in-game</span><span class="gameplay-num">03</span><h3>Finish the play</h3><p>Tries are manual: enter the correct in-goal with possession and choose to score. Home and away scoring feed the game state and scoreboard.</p><div class="gameplay-tags"><span>Manual tries</span><span>Scoreboard</span><span>Match clock</span></div></article>
+          <article class="gameplay-card gameplay-card-wide"><span class="gameplay-status next">In development</span><span class="gameplay-num">04</span><h3>Survive the contact</h3><p>Stability and tipping are the bridge into the tackle system. Speed, steering, lean direction and contact will determine whether a player holds the chair, lifts a wheel, recovers — or goes over.</p><div class="gameplay-tags"><span>Stability</span><span>Tipping</span><span>Recovery</span><span>Contact</span><span>Tags next</span></div></article>
         </div>
 
-        <div class="dev-articles" data-reveal aria-label="Development log details">
-
-          <article class="dev-article" id="devlog-001">
-            <div class="dev-article-head">
-              <div>
-                <div class="dev-article-kicker">Devlog 001 · Chair Mechanics</div>
-                <h3>Body Position Matters: Building Leaning &amp; Agility</h3>
-              </div>
-              <span class="dev-article-status">Working in-game</span>
-            </div>
-            <div class="dev-article-body">
-              <div class="dev-article-block">
-                <h4>Why it matters</h4>
-                <p>In WRL, the player is not fixed upright in the chair. Body position changes reach, balance, space and how difficult a shoulder tag is to access.</p>
-              </div>
-              <div class="dev-article-block">
-                <h4>In-game</h4>
-                <p>Lean mode gives the right stick direct control over upper-body position, turning leaning into a deliberate input rather than a cosmetic animation.</p>
-              </div>
-              <div class="dev-article-block">
-                <h4>Player stats</h4>
-                <p>Agility maps to maximum sideways lean, currently from roughly <code>6°</code> at very low Agility to around <code>22°</code> at maximum.</p>
-              </div>
-              <div class="dev-article-block">
-                <h4>UE5 notes</h4>
-                <p>The system is being built primarily in Blueprints and connects player data directly to functional movement rather than keeping ratings decorative.</p>
-              </div>
-              <div class="dev-article-block">
-                <h4>What comes next</h4>
-                <p>Lean position will feed into stability and, later, real tag accessibility based on body position, reach, angle and contact state.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="dev-article" id="devlog-002">
-            <div class="dev-article-head">
-              <div>
-                <div class="dev-article-kicker">Devlog 002 · Gameplay</div>
-                <h3>Using Your Weight: Leaning Changes Chair Handling</h3>
-              </div>
-              <span class="dev-article-status">Working in-game</span>
-            </div>
-            <div class="dev-article-body">
-              <div class="dev-article-block">
-                <h4>Why it matters</h4>
-                <p>Body position in a sports wheelchair is part of driving. Leaning should change what the chair can do, not simply make the character look more animated.</p>
-              </div>
-              <div class="dev-article-block">
-                <h4>In-game</h4>
-                <p>Forward lean during a sprint can provide a small speed gain, while leaning into the direction of a turn increases rotation and makes committed turns feel sharper.</p>
-              </div>
-              <div class="dev-article-block">
-                <h4>Player stats</h4>
-                <p>Because Agility controls available lean, more agile players gain a larger functional body-position range to exploit these handling effects.</p>
-              </div>
-              <div class="dev-article-block">
-                <h4>UE5 notes</h4>
-                <p>The current tuning reaches about <code>5%</code> maximum forward-lean sprint boost and roughly <code>40%</code> lean-assisted turn boost. Analogue diagonal movement was also corrected.</p>
-              </div>
-              <div class="dev-article-block">
-                <h4>What comes next</h4>
-                <p>The same lean direction used to gain performance will become part of the risk model for instability and tipping.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="dev-article" id="devlog-003">
-            <div class="dev-article-head">
-              <div>
-                <div class="dev-article-kicker">Devlog 003 · Chair Mechanics</div>
-                <h3>Finding the Tipping Point</h3>
-              </div>
-              <span class="dev-article-status">In development next</span>
-            </div>
-            <div class="dev-article-body">
-              <div class="dev-article-block">
-                <h4>Why it matters</h4>
-                <p>Fast turns, poor body position and contact all affect chair stability in the real game. A convincing WRL game needs that risk to be part of decision-making.</p>
-              </div>
-              <div class="dev-article-block">
-                <h4>In-game</h4>
-                <p>Speed, steering input and lean direction will combine into a stability calculation. Leaning into a turn should help; leaning away from it should make the chair less secure.</p>
-              </div>
-              <div class="dev-article-block">
-                <h4>Player stats</h4>
-                <p>Agility, Recovery and later contact-related attributes can give different players different margins for control and recovery instead of using one universal tipping threshold.</p>
-              </div>
-              <div class="dev-article-block">
-                <h4>UE5 notes</h4>
-                <p>The target is a readable transition: visible wheel lift or chair tilt first, then a recoverable danger state, then a full fall when the instability becomes too great.</p>
-              </div>
-              <div class="dev-article-block">
-                <h4>What comes next</h4>
-                <p>Contact will feed into instability, and a ball carrier tipping while in possession will eventually count as one way a tackle can be completed.</p>
-              </div>
-            </div>
-          </article>
-
+        <div class="build-strip" data-reveal aria-label="Current development status">
+          <div><span>Playable now</span><strong>Movement · Possession · Passing · Kicking · Manual tries · Score &amp; clock</strong></div>
+          <div class="current"><span>Current focus</span><strong>Chair stability · Wheel lift · Tipping · Recovery</strong></div>
+          <div><span>Coming next</span><strong>Shoulder tags · Contact tackles · Restarts · Deeper passing</strong></div>
         </div>
-
-        <div class="devlog-foot" data-reveal>
-          <div>
-            <strong>Next journal: What counts as a tackle?</strong>
-            <p>Tags, chair contact, tipping, big-wheel defence and the match restart systems that connect them.</p>
-          </div>
-          <span class="dev-state next">Planned</span>
-        </div>
-
       </div>
-
     </section>
 
-    <!-- IMPACT -->
+    <section class="wrl-s player-system" id="players">
+      <div class="wrap player-system-grid">
+        <div data-reveal>
+          <span class="wrl-eyebrow">Player Identity</span>
+          <h2 class="wrl-h2">Ratings you can<em>actually feel.</em></h2>
+          <p class="wrl-lead">Player data is designed to affect the game itself. Speed and Acceleration shape movement. Agility already controls functional lean range. Handling, Passing and Kicking can shape ball play, while Tackling, Aggression and Recovery can feed the physical contest.</p>
+          <div class="attribute-cloud" aria-label="Player attributes"><span>Speed</span><span>Acceleration</span><span>Agility</span><span>Stamina</span><span>Handling</span><span>Tackling</span><span>Aggression</span><span>Passing</span><span>Kicking</span><span>Recovery</span><span>Overall</span></div>
+        </div>
+        <aside class="attribute-example" data-reveal>
+          <span class="attribute-kicker">Working example</span>
+          <strong class="attribute-value">6° → 22°</strong>
+          <h3>Agility changes movement range.</h3>
+          <p>Maximum sideways lean currently scales from roughly 6° at very low Agility to around 22° at maximum Agility. That makes the rating a functional difference, not a number hidden in a menu.</p>
+          <div class="attribute-chain"><span>Agility</span><b>→</b><span>Lean range</span><b>→</b><span>Handling</span><b>→</b><span>Future tag access</span></div>
+        </aside>
+      </div>
+    </section>
+
     <section class="wrl-impact">
-
-      <div class="impact-bg" aria-hidden="true">
-        <img src="images/wrl-action.jpg" alt="">
-      </div>
-
+      <div class="impact-bg" aria-hidden="true"><img src="images/wrl-action.jpg" alt=""></div>
       <div class="impact-inner wrap" data-reveal>
-
-        <div class="impact-kicker">
-          This is the feeling
-        </div>
-
-        <h2 class="impact-h">
-          Fast.<br>
-          Physical.<br>
-          <span>Unpredictable.</span>
-        </h2>
-
-        <p class="impact-p">
-          Every push should matter. Every angle should matter. Every hit should
-          change the next decision. The game is being built around momentum,
-          positioning and interaction so matches do not feel like the same
-          sequence repeating over and over.
-        </p>
-
+        <div class="impact-kicker">This is the feeling</div>
+        <h2 class="impact-h">Fast.<br>Physical.<br><span>Unpredictable.</span></h2>
+        <p class="impact-p">Every push should matter. Every angle should matter. Every hit should change the next decision. The game is being built around momentum, positioning and interaction so matches do not feel like the same sequence repeating over and over.</p>
       </div>
-
     </section>
 
-    <!-- ROADMAP -->
-    <section class="wrl-s" id="roadmap">
-
+    <section class="wrl-s future-section" id="future">
       <div class="wrap">
-
-        <div data-reveal>
-
-          <span class="wrl-eyebrow">
-            Development Roadmap
-          </span>
-
-          <h2 class="wrl-h2">
-            From prototype to
-            <em>match day.</em>
-          </h2>
-
-          <p class="wrl-lead">
-            Development is focused on playable systems first. The chair needs to
-            feel right before contact, tactics, full teams and presentation are
-            layered on top.
-          </p>
-
+        <div class="showcase-head" data-reveal>
+          <div><span class="wrl-eyebrow">Road Ahead</span><h2 class="wrl-h2">From prototype to<em>full match day.</em></h2></div>
+          <p class="wrl-lead">There is a clear path from the systems working today to the 5v5 game the project is aiming for. No dates are being promised — the focus is on building each layer properly.</p>
         </div>
-
-        <div class="roadmap-grid" data-reveal>
-
-          <article class="rm-item done">
-
-            <span>Phase 01</span>
-
-            <h3>Core Movement</h3>
-
-            <p>
-              Acceleration, momentum, sprinting, steering, push animation and
-              fundamental wheelchair control.
-            </p>
-
-            <div class="rm-state">
-              Playable
-            </div>
-
-          </article>
-
-          <article class="rm-item active">
-
-            <span>Phase 02</span>
-
-            <h3>Chair &amp; Body Mechanics</h3>
-
-            <p>
-              Agility-based leaning, body position, lean-assisted turning,
-              stability, tipping and deeper chair behaviour.
-            </p>
-
-            <div class="rm-state">
-              In development now
-            </div>
-
-          </article>
-
-          <article class="rm-item active-secondary">
-
-            <span>Phase 03</span>
-
-            <h3>Match Systems</h3>
-
-            <p>
-              Passing, kicking, possession, tries, scoreboard, game clock,
-              tackles, tags and match restarts.
-            </p>
-
-            <div class="rm-state">
-              Partially playable
-            </div>
-
-          </article>
-
-          <article class="rm-item">
-
-            <span>Phase 04</span>
-
-            <h3>5v5 &amp; Presentation</h3>
-
-            <p>
-              Teams, AI, player switching, complete rosters, venues, crowds, replays,
-              broadcast presentation and complete match-day structure.
-            </p>
-
-            <div class="rm-state">
-              Planned
-            </div>
-
-          </article>
-
+        <div class="future-grid" data-reveal>
+          <article class="future-card active"><span>Next on court</span><h3>Contact becomes gameplay</h3><p>Stability, tipping and recovery lead directly into tag removal, defender reach, body-position accessibility, chair contact, big-wheel defence and match restarts.</p><ul><li>Readable wheel lift before a fall</li><li>Tag reach based on position and angle</li><li>Tipping as a valid tackle outcome</li><li>Pass power and teammate targeting</li><li>Variable kicking behaviour</li></ul></article>
+          <article class="future-card"><span>Building the match</span><h3>Turn systems into 5v5</h3><p>The next major leap is getting full teams on court and making the match flow around the core mechanics already being built.</p><ul><li>Team rosters and player data</li><li>AI teammates and opposition</li><li>Player switching and control modes</li><li>Traits and individual play styles</li><li>Conversions, halftime and complete restarts</li></ul></article>
+          <article class="future-card"><span>Match-day vision</span><h3>Make it feel broadcast</h3><p>Once the game underneath is strong enough, presentation can turn a playable match into an event that looks and sounds like Wheelchair Rugby League.</p><ul><li>Authentic venues and court layouts</li><li>Kits, chairs and team identity</li><li>Crowds, benches and officials</li><li>Replays and broadcast cameras</li><li>Full match-day UI and presentation</li></ul></article>
         </div>
-
       </div>
-
     </section>
 
-    <!-- PLAYTEST -->
-    <section class="wrl-s pt-bg" id="playtest">
-
+    <section class="wrl-s devlog-bg" id="devlog">
       <div class="wrap">
-
-        <div data-reveal>
-
-          <span class="wrl-eyebrow">
-            Early Testing
-          </span>
-
-          <h2 class="wrl-h2">
-            Feel the chair
-            <em>before the match.</em>
-          </h2>
-
-          <p class="wrl-lead">
-            A focused Windows movement build is planned so early testers can try
-            the chair handling while the wider match systems continue to develop.
-          </p>
-
+        <div class="devlog-head" data-reveal>
+          <div><span class="wrl-eyebrow">Latest Development</span><h2 class="wrl-h2">See how the game<em>is being built.</em></h2><p class="wrl-lead">The main page is for the game. The development log goes deeper into why individual mechanics matter and how they are being implemented.</p></div>
+          <a class="devlog-all-link" href="devlog.html">View full devlog →</a>
         </div>
-
-        <div class="pt-panel" data-reveal>
-
-          <div class="pt-copy">
-
-            <span class="wrl-eyebrow">
-              Pre-alpha movement test
-            </span>
-
-            <h3>
-              Push. Turn.
-              <span>Feel the chair.</span>
-            </h3>
-
-            <p>
-              This is not intended to be a full match demo. It is a focused look
-              at the wheelchair handling systems that sit underneath the eventual
-              game.
-            </p>
-
-            <div class="test-tags" aria-label="Build features">
-              <span>Acceleration</span>
-              <span>Momentum</span>
-              <span>Leaning</span>
-              <span>Turning</span>
-              <span>Player attributes</span>
-            </div>
-
-          </div>
-
-          <aside class="build-card" aria-label="Movement test download">
-
-            <div>
-
-              <div class="build-topline">
-                <span>Windows PC</span>
-                <span class="build-chip">Pre-Alpha</span>
-              </div>
-
-              <h4>
-                Chair Movement Test
-              </h4>
-
-              <p class="build-desc">
-                A downloadable movement test is being prepared. Join the alpha
-                list to hear when public testing becomes available.
-              </p>
-
-              <div class="build-meta">
-
-                <div>
-                  <span>Version</span>
-                  <strong id="buildVersion">Movement 0.1</strong>
-                </div>
-
-                <div>
-                  <span>Platform</span>
-                  <strong id="buildPlatform">Windows 10 / 11</strong>
-                </div>
-
-                <div>
-                  <span>Status</span>
-                  <strong id="buildSize">Not yet public</strong>
-                </div>
-
-              </div>
-
-            </div>
-
-            <div>
-
-              <a
-                class="btn-dl"
-                id="playtestDl"
-                href="#alpha"
-              >
-                Join waitlist for future testing →
-              </a>
-
-              <p class="dl-note" id="dlNote">
-                Join the alpha waitlist to be notified when external playtesting opens.
-              </p>
-
-            </div>
-
-          </aside>
-
+        <div class="devlog-grid" data-reveal>
+          <article class="dev-card dev-card-featured"><a class="dev-card-link" href="devlog.html#devlog-001"><span class="dev-index">DEVLOG 001</span><div class="dev-meta"><span class="dev-tag">Chair Mechanics</span><span class="dev-state working">Working in-game</span></div><h3>Body Position Matters</h3><p>Leaning became a true gameplay input, with Agility controlling each player's functional movement range.</p><div class="dev-points"><span>Approx. 6°–22° lean range</span><span>Right-stick body control</span><span>Built for future tag accessibility</span></div><div class="dev-read">Read the development story</div></a></article>
+          <article class="dev-card"><a class="dev-card-link" href="devlog.html#devlog-002"><span class="dev-index">DEVLOG 002</span><div class="dev-meta"><span class="dev-tag">Gameplay</span><span class="dev-state working">Working in-game</span></div><h3>Using Your Weight</h3><p>Body position now changes chair performance through sprint and turning behaviour instead of existing only as animation.</p><div class="dev-points"><span>Up to ~5% sprint boost</span><span>~40% lean-turn boost</span><span>Improved analogue diagonals</span></div><div class="dev-read">Read the development story</div></a></article>
+          <article class="dev-card"><a class="dev-card-link" href="devlog.html#devlog-003"><span class="dev-index">DEVLOG 003</span><div class="dev-meta"><span class="dev-tag">Chair Mechanics</span><span class="dev-state next">Up next</span></div><h3>Finding the Tipping Point</h3><p>Speed, steering, lean direction and contact are being brought together into a readable stability and tipping system.</p><div class="dev-points"><span>Correct lean reduces risk</span><span>Wrong-way lean increases risk</span><span>Recovery before full tipping</span></div><div class="dev-read">See what is being built next</div></a></article>
         </div>
-
       </div>
-
     </section>
 
-    <!-- CONNECTIONS -->
     <section class="wrl-s collab-bg" id="connections">
-
       <div class="wrap">
-
-        <div data-reveal>
-
-          <span class="wrl-eyebrow">
-            Connections &amp; Conversations
-          </span>
-
-          <h2 class="wrl-h2">
-            A game with the potential to
-            <em>grow the sport.</em>
-          </h2>
-
-          <p class="wrl-lead">
-            The long-term ambition is bigger than a prototype: work with people
-            around Wheelchair Rugby League, broadcast and the wider Rugby League
-            community to create something credible, visible and worth following.
-          </p>
-
-        </div>
-
-        <div class="partner-shell" data-reveal>
-
-          <div
-            class="partner-grid"
-            aria-label="Organisations relevant to current conversations and future collaboration"
-          >
-
-            <div class="partner-cell">
-              <img src="images/rfl.png" alt="Rugby Football League">
-            </div>
-
-            <div class="partner-cell">
-              <img src="images/betfred-super-league.webp" alt="Betfred Super League">
-            </div>
-
-            <div class="partner-cell">
-              <img src="images/league-on-wheels.jpg" alt="League on Wheels">
-            </div>
-
-            <div class="partner-cell">
-              <img src="images/sky-sports.png" alt="Sky Sports">
-            </div>
-
-            <div class="partner-cell">
-              <img src="images/bbc.png" alt="BBC">
-            </div>
-
-          </div>
-
-        </div>
-
-        <p class="partner-note">
-          Logos are shown as context for conversations and future collaboration
-          ambitions and do not imply endorsement, licensing, sponsorship or an
-          official partnership unless separately announced.
-        </p>
-
+        <div data-reveal><span class="wrl-eyebrow">Connections &amp; Conversations</span><h2 class="wrl-h2">A game with the potential to<em>grow the sport.</em></h2><p class="wrl-lead">The long-term ambition is bigger than a prototype: work with people around Wheelchair Rugby League, broadcast and the wider Rugby League community to create something credible, visible and worth following.</p></div>
+        <div class="partner-shell" data-reveal><div class="partner-grid" aria-label="Organisations relevant to current conversations and future collaboration">
+          <div class="partner-cell"><img src="images/rfl.png" alt="Rugby Football League"></div>
+          <div class="partner-cell"><img src="images/betfred-super-league.webp" alt="Betfred Super League"></div>
+          <div class="partner-cell"><img src="images/league-on-wheels.jpg" alt="League on Wheels"></div>
+          <div class="partner-cell"><img src="images/sky-sports.png" alt="Sky Sports"></div>
+          <div class="partner-cell"><img src="images/bbc.png" alt="BBC"></div>
+        </div></div>
+        <p class="partner-note">Logos are shown as context for conversations and future collaboration ambitions and do not imply endorsement, licensing, sponsorship or an official partnership unless separately announced.</p>
       </div>
-
     </section>
 
-    <!-- ALPHA -->
-    <section class="wrl-s" id="alpha">
-
+    <section class="wrl-s closing-section">
       <div class="wrap" data-reveal>
-
-        <div class="alpha-panel">
-
-          <div>
-
-            <h2>
-              Get in before<br>
-              the first whistle.
-            </h2>
-
-            <p>
-              Join the early-access list for development updates, first-look
-              builds and future alpha testing opportunities.
-            </p>
-
-          </div>
-
-          <form class="signup-form" id="signupForm" novalidate>
-
-            <label for="alphaEmail">
-              Email address
-            </label>
-
-            <input
-              type="email"
-              id="alphaEmail"
-              autocomplete="email"
-              placeholder="you@example.com"
-              required
-            >
-
-            <button class="btn-sub" type="submit">
-              Join the waitlist
-            </button>
-
-            <p class="form-note">
-              Development updates, early builds and alpha invites — no spam.
-            </p>
-            <p class="alpha-honesty">
-              <strong>Early interest form:</strong> mailing-list delivery is not connected yet.
-              For now, submitting saves your email only on this device so Ralphie Studios
-              does not claim a subscription has been created when it has not.
-            </p>
-
-            <p
-              class="form-msg"
-              id="formMsg"
-              role="status"
-              aria-live="polite"
-            ></p>
-
-          </form>
-
+        <div class="wrl-closing">
+          <div><span class="wrl-eyebrow">Development Continues</span><h2>Built in public.<br><span>One system at a time.</span></h2><p>For now, the best place to follow the project is the development log as the game moves from chair mechanics into contact, tackling and full-match systems.</p></div>
+          <div class="closing-actions"><a class="btn-wrl-p" href="devlog.html">Read the Devlog →</a><a class="btn-wrl-g" href="mailto:contact@ralphiestudios.com">Contact Ralphie Studios</a></div>
         </div>
-
       </div>
-
     </section>
-
   </main>
 
   <footer>
-
-    <a href="index.html" class="ft-logo-brand">
-      <span class="nr">RALPHIE</span><span class="ns">STUDIOS</span>
-    </a>
-
-    <div class="ft-right">
-
-      <p>
-        &copy; 2026 Ralphie Studios. Wheelchair Rugby League — in development.
-      </p>
-
-      <div class="ft-links">
-        <a href="index.html">Studio</a>
-        <a href="terms.html">Terms</a>
-        <a href="privacy.html">Privacy</a>
-      </div>
-
-    </div>
-
+    <a href="index.html" class="ft-logo-brand"><span class="nr">RALPHIE</span><span class="ns">STUDIOS</span></a>
+    <div class="ft-right"><p>&copy; 2026 Ralphie Studios. Wheelchair Rugby League — in development.</p><div class="ft-links"><a href="index.html">Studio</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></div></div>
   </footer>
 
-  <script src="site-config.js"></script>
-
   <script>
-
     const wrlNav = document.getElementById('wrlNav');
     const wrlNavToggle = document.getElementById('wrlNavToggle');
     const wrlNavLinks = wrlNav.querySelector('.nav-links');
-
     wrlNavToggle.addEventListener('click', () => {
       const open = wrlNavLinks.classList.toggle('open');
       wrlNavToggle.setAttribute('aria-expanded', String(open));
+      wrlNavToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     });
-
-    wrlNavLinks
-      .querySelectorAll('a')
-      .forEach(a => a.addEventListener('click', () => {
-        wrlNavLinks.classList.remove('open');
-        wrlNavToggle.setAttribute('aria-expanded', 'false');
-      }));
-
-
-    const cfg = window.WRL_SITE_CONFIG?.playtest || {};
-    const dlBtn = document.getElementById('playtestDl');
-    const dlNote = document.getElementById('dlNote');
-
-    if (cfg.version) {
-      document.getElementById('buildVersion').textContent = cfg.version;
-    }
-
-    if (cfg.platform) {
-      document.getElementById('buildPlatform').textContent = cfg.platform;
-    }
-
-    if (cfg.size) {
-      document.getElementById('buildSize').textContent = cfg.size;
-    }
-
-    if (cfg.url && dlBtn) {
-
-      dlBtn.href = cfg.url;
-      dlBtn.removeAttribute('aria-disabled');
-      dlBtn.textContent = 'Download Windows build →';
-
-      dlBtn.setAttribute('target', '_blank');
-      dlBtn.setAttribute('rel', 'noopener');
-
-      if (dlNote) {
-        dlNote.textContent =
-          cfg.note ||
-          'Extract the ZIP and launch the packaged Windows executable.';
-      }
-
-    }
-
-
-    window.addEventListener('scroll', () => {
-      wrlNav.classList.toggle('scrolled', scrollY > 30);
-    }, { passive: true });
-
-
-    const obs = new IntersectionObserver(entries => {
-
-      entries.forEach(e => {
-
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          obs.unobserve(e.target);
-        }
-
-      });
-
-    }, { threshold: .1 });
-
-
-    document
-      .querySelectorAll('[data-reveal]')
-      .forEach(el => obs.observe(el));
-
-
-    document
-      .getElementById('signupForm')
-      .addEventListener('submit', e => {
-
-        e.preventDefault();
-
-        const email =
-          document.getElementById('alphaEmail').value.trim();
-
-        const msg =
-          document.getElementById('formMsg');
-
-        if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-
-          msg.textContent =
-            'Enter a valid email address.';
-
-          return;
-
-        }
-
-        localStorage.setItem(
-          'wrl-alpha-email',
-          email
-        );
-
-        msg.textContent =
-          'Saved on this device — mailing-list signup will open later.';
-
-        e.target
-          .querySelector('.btn-sub')
-          .textContent = 'Saved ✓';
-
-      });
-
+    wrlNavLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      wrlNavLinks.classList.remove('open');
+      wrlNavToggle.setAttribute('aria-expanded', 'false');
+      wrlNavToggle.setAttribute('aria-label', 'Open menu');
+    }));
+    window.addEventListener('scroll', () => wrlNav.classList.toggle('scrolled', scrollY > 30), { passive: true });
+    const obs = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    }), { threshold: .1 });
+    document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
   </script>
-
 </body>
 </html>

@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — Ralphie Studios</title>
+  <meta name="description" content="Privacy information for the Ralphie Studios website.">
+  <meta name="theme-color" content="#0f1835">
+  <link rel="canonical" href="https://ralphiestudios.com/privacy">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,7 +64,7 @@
 
     <ul class="nav-links">
       <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#games">Projects</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
       <li><a href="index.html#team">Team</a></li>
       <li><a href="index.html#connect">Contact</a></li>
     </ul>
@@ -78,7 +81,7 @@
     <div class="legal-wrap">
       <p class="eyebrow">Legal</p>
       <h1>Privacy Policy</h1>
-      <p class="legal-meta">Last updated: 31 August 2026</p>
+      <p class="legal-meta">Last updated: 3 September 2026</p>
 
       <p>Ralphie Studios ("we", "us", "our") is committed to protecting your privacy. This policy explains what information we collect, how we use it, and your rights under the UK General Data Protection Regulation (UK GDPR).</p>
 
@@ -86,28 +89,27 @@
       <p>Ralphie Studios is an independent development studio based in the United Kingdom, creating games, apps and digital sports experiences. This website operates at <strong>ralphiestudios.com</strong>. For any privacy-related queries, contact us at: <a href="mailto:contact@ralphiestudios.com">contact@ralphiestudios.com</a></p>
 
       <h2>What Information We Collect</h2>
-      <p>We collect the following personal data:</p>
+      <p>We collect only the personal data needed to operate the website and respond to enquiries:</p>
       <ul>
         <li><strong>Contact enquiries:</strong> If you email us directly, we receive your email address and the content of your message.</li>
-        <li><strong>Alpha waitlist sign-ups:</strong> If you submit your email address via the Wheelchair Rugby League alpha waitlist form, we collect and store that email address to send you development updates, early-access notifications and alpha test invites. You can unsubscribe at any time by emailing <a href="mailto:contact@ralphiestudios.com">contact@ralphiestudios.com</a>.</li>
         <li><strong>Server logs:</strong> Our hosting provider (Cloudflare) may log basic technical data such as your IP address, browser type, and pages visited. These logs are used for security and performance purposes. See <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare's privacy policy</a> for details.</li>
       </ul>
-      <p>We do not use tracking cookies, analytics scripts, or advertising networks on this website.</p>
+      <p>There is currently no active Wheelchair Rugby League email waitlist form on this website. We do not use tracking cookies, analytics scripts, or advertising networks on this website.</p>
 
       <h2>How We Use Your Information</h2>
       <ul>
         <li><strong>Contact enquiries</strong> are used solely to respond to your message.</li>
-        <li><strong>Waitlist emails</strong> are used to send development updates and notify you when alpha testing becomes available. We will not use your email for unrelated marketing, and we will not pass it to third parties.</li>
+        <li><strong>Server-log information</strong> may be used for website security, reliability and performance.</li>
       </ul>
 
       <h2>Legal Basis for Processing</h2>
       <ul>
         <li><strong>Contact enquiries:</strong> processed on the basis of <strong>legitimate interests</strong> (responding to your message).</li>
-        <li><strong>Waitlist sign-ups:</strong> processed on the basis of your <strong>consent</strong>. You may withdraw consent at any time by emailing us and we will remove your address from our list.</li>
+        <li><strong>Security and server logs:</strong> processed where necessary for our legitimate interests in maintaining the security and reliability of the website.</li>
       </ul>
 
       <h2>Data Retention</h2>
-      <p>Email correspondence is retained only as long as necessary to fulfil the purpose for which it was received. Waitlist email addresses are held until you unsubscribe or the project concludes, whichever comes first. Server logs are retained in accordance with Cloudflare's standard retention periods.</p>
+      <p>Email correspondence is retained only as long as necessary to fulfil the purpose for which it was received. Server logs are retained in accordance with Cloudflare's standard retention periods.</p>
 
       <h2>Your Rights</h2>
       <p>Under UK GDPR, you have the right to:</p>
@@ -145,11 +147,16 @@
   <script>
     const btn = document.getElementById('legalNavToggle');
     const nav = document.getElementById('wrlNav');
+    const links = nav.querySelector('.nav-links');
     btn.addEventListener('click', () => {
-      const open = nav.classList.toggle('nav-open');
-      btn.setAttribute('aria-expanded', open);
+      const open = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
       btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      links.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }));
   </script>
 
 </body>
